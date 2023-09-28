@@ -1,0 +1,21 @@
+#gradient-back {
+  height: 100lvh;
+  background: url("../image/wave.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+.form-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-wrapper .form-card {
+  width: 60%;
+  height: 400px;
+  background-color: #f8f8f8;
+}
+
+

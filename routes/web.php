@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(AdminController::class)->group(function(){
+    //
+    Route::get('/', 'Login')->name('Admin.login');
+    //
+    Route::post('/login_check', 'login_check')->name('Admin.login_check');
+    
 });
