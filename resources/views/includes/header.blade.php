@@ -1,12 +1,12 @@
 <div class="row py-2 px-2 justify-content-between navbar-bg text-white sticky-top">
   <div class="col col-md-5">
     <div class="d-flex h-100 gap-3 align-items-center">
-      <button type="button" class="btn btn-light d-md-none" aria-pressed="true" data-bs-target="#offcanvasExample"
+      <button type="button" class="btn btn-warning d-md-none " aria-pressed="true" data-bs-target="#offcanvasExample"
         data-bs-toggle="offcanvas">
-        <i class="bi bi-list" style="font-size: 1"></i>
+        Menus
       </button>
-      <h3 class="m-0 ps-6 fw-bold">{{Session::get('LoginName')}}</h3>
-      <button class="btn text-light border border-2 border-info rounded-pill d-md-inline-flex d-none">
+      <h3 class="m-0 ps-6 fw-bold">Restaurent POS</h3>
+      <button class="btn text-light border border-2 border-warning rounded-pill d-md-inline-flex d-none">
         <i class="bi bi-search"></i>
         <input type="text" id="nav-input" class="text-light" placeholder="Search" />
       </button>
@@ -23,20 +23,8 @@
       <div class="collapse navbar-collapse mt-2 m-md-0 justify-content-md-end" id="navbar-body">
         <ul class="navbar-nav flex-row">
           <div class="d-inline-flex gap-4 align-items-center nav-item">
-            <div>
-              <lord-icon src="https://cdn.lordicon.com/msetysan.json" trigger="hover" colors="primary:#f8f8f8">
-              </lord-icon>
-            </div>
-            <div>
-              <lord-icon src="https://cdn.lordicon.com/zchxlapl.json" trigger="hover" colors="primary:#f8f8f8">
-              </lord-icon>
-            </div>
             <div class="border-0">
               <input type="checkbox" id="mode" class="theme-checkbox" />
-            </div>
-            <div>
-              <lord-icon src="https://cdn.lordicon.com/dycatgju.json" trigger="hover" colors="primary:#f8f8f8">
-              </lord-icon>
             </div>
           </div>
           <div class="dropdown d-md-inline-flex px-2 nav-item">

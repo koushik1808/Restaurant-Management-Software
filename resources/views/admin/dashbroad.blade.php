@@ -9,48 +9,87 @@
 
 @section('hero')
 <div class="container-fluid">
-  <div class="row gap-2 flex-column flex-lg-row">
-    <div class="card text-bg-primary mb-3 col">
-      <div class="card-header">Students</div>
+  <div class="row mb-3">
+    <div class="col py-3 d-flex gap-3">
+      <input type="text" class="form-control rounded" placeholder="Search Table">
+      <div class="btn btn-primary">Search</div>
+    </div>
+  </div>
+  <div class="row gap-4 flex-column flex-lg-row">
+    <div class="card col col-lg-2 bg-success">
+
       <div class="card-body">
-        <h5 class="card-title">5000</h5>
-        <p class="card-text">Students Admitted</p>
+        Table -1
       </div>
     </div>
-    <div class="card text-bg-warning mb-3 col">
-      <div class="card-header">Techers</div>
+    <div class="card col col-lg-2 bg-success">
+
       <div class="card-body">
-        <h5 class="card-title">345</h5>
-        <p class="card-text">Techers Presented</p>
+        Table -2
       </div>
     </div>
-    <div class="card text-bg-danger mb-3 col">
-      <div class="card-header">Staffs</div>
+    <div class="card col col-lg-2 bg-success">
+
       <div class="card-body">
-        <h5 class="card-title">156</h5>
-        <p class="card-text">Staffs On Services</p>
+        Table -3
       </div>
     </div>
-    <div class="card text-bg-success mb-3 col">
-      <div class="card-header">Bus</div>
+    <div class="card col col-lg-2 bg-success">
+
       <div class="card-body">
-        <h5 class="card-title">10</h5>
-        <p class="card-text">Buses on Routes</p>
+        Table -4
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -5
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -6
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -7
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -8
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -9
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -10
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -11
+      </div>
+    </div>
+    <div class="card col col-lg-2 bg-success">
+
+      <div class="card-body">
+        Table -12
       </div>
     </div>
   </div>
-  <div class="row my-3 d-none d-lg-flex">
-    <table class="table table-striped col" id="myTable">
-      <thead>
-        <td>SL.No</td>
-        <td>Student Name</td>
-        <td>Age</td>
-        <td>Gurdian</td>
-        <td>Phone</td>
-        <td>Class</td>
-      </thead>
-    </table>
-  </div>
+
 </div>
 
 @endsection

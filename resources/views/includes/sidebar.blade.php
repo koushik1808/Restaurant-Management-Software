@@ -8,7 +8,7 @@
 
     <ul class="list-unstyled d-flex flex-column gap-3" id="sidebar-list">
       <li class="">
-        <a href="{{route('Admin.Dashbroad')}}" class="btn">
+        <a href="" class="btn">
           <span class="me-2">
             <i class="bi bi-grid-1x2-fill"></i>
           </span>
@@ -19,93 +19,78 @@
         <a href="#" class="btn" data-bs-target="#ad-collapse" aria-controls="#ad-collapse" data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-calendar2-x-fill"></i>
           </span>
-          Admission
+          Catagorys
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ad-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="ad-collapse">
-          <li><a href="{{route('student.add')}}" class="btn">Student Registration </a></li>
-          <li><a href="" class="btn">New Admission </a></li>
-          <li><a href="#" class="btn"> Admission Class Wise </a></li>
-          <li><a href="#" class="btn">See Admission Reports </a></li>
+          <li><a href="" class="btn">Add Catagory </a></li>
+          <li><a href="" class="btn">Manage Catagory </a></li>
         </ul>
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#at-collapse" data-bs-toggle="collapse" aria-controls="#at-collapse">
           <span class="me-2"><i class="bi bi-calendar-check"></i></span>
-          Attendance
+          Menus
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#at-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="at-collapse">
-          <li><a href="#" class="btn"> Add Attendance </a></li>
-          <li><a href="#" class="btn"> See Reports </a></li>
+          <li><a href="#" class="btn"> Add Menu </a></li>
+          <li><a href="#" class="btn"> See All Menus </a></li>
         </ul>
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#fe-collapse" data-bs-toggle="collapse" aria-controls="#fe-collapse">
           <span class="me-2"><i class="bi bi-cash-coin"></i></span>
-          Financial Management
+          Tables Managment
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fe-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="fe-collapse">
-          <li><a href="#" class="btn"> Add Fees </a></li>
-          <li><a href="#" class="btn"> See Fees Reports </a></li>
-          <li><a href="#" class="btn"> Techers Payout Reports </a></li>
-          <li><a href="#" class="btn"> Students Fees Reports </a></li>
-          <li><a href="#" class="btn"> Staffs Payout Reports </a></li>
+          <li><a href="#" class="btn"> Add Table </a></li>
+          <li><a href="#" class="btn"> See All Tables </a></li>
+          <li><a href="#" class="btn">Manage Tables</a></li>
+
         </ul>
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#te-collapse" aria-controls="#te-collapse" data-bs-toggle="collapse">
-          <span class="me-2"><i class="bi bi-alipay"></i></span>Techers
+          <span class="me-2"><i class="bi bi-alipay"></i></span>
+          Reports
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#te-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="te-collapse">
-          <li><a href="{{route('teacher.add')}}" class="btn"> Add Techers </a></li>
-          <li><a href="{{route('teacher.manage')}}" class="btn"> Manage Techers </a></li>
+          <li><a href="" class="btn"> Monthly Reports </a></li>
+          <li><a href="" class="btn"> Custom Reports </a></li>
         </ul>
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#st-collapse" data-bs-toggle="collapse" aria-controls="#st-collapse">
-          <span class="me-2"><i class="bi bi-bezier"></i></span> Students
+          <span class="me-2"><i class="bi bi-bezier"></i></span> Stock Managment
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#st-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="st-collapse">
-          <li><a href="{{route('student.fee')}}" class="btn"> Student Fees </a></li>
-          <li><a href="{{route('student.manage')}}" class="btn"> Manage Student </a></li>
+          <li><a href="" class="btn"> Add Stock </a></li>
+          <li><a href="" class="btn"> Manage Inventory </a></li>
         </ul>
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#stt-collapse" data-bs-toggle="collapse" aria-controls="#stt-collapse">
-          <span class="me-2"><i class="bi bi-boxes"></i></span> Staffs
+          <span class="me-2"><i class="bi bi-boxes"></i></span>
+          Financial Reports
         </a>
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stt-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="stt-collapse">
-          <li><a href="#" class="btn"> Add Staff </a></li>
-          <li><a href="#" class="btn"> Manage Staffs </a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="btn" data-bs-target="#cl-collapse" data-bs-toggle="collapse">
-          <span class="me-2"><i class="bi bi-building-gear"></i></span>
-          Classes
-        </a>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#cl-collapse"
-          aria-expanded="false"></button>
-        <ul class="collapse" id="cl-collapse">
-          <li><a href="#" class="btn"> Add Class </a></li>
-
-          <li><a href="#" class="btn"> Manage Class Data </a></li>
+          <li><a href="#" class="btn"> Monthly Reports </a></li>
+          <li><a href="#" class="btn"> Growth Reports </a></li>
         </ul>
       </li>
 
       <hr class="hr" />
-
       <li>
         <a href="#" class="btn border-0">
           <span>
@@ -123,7 +108,7 @@
         </a>
       </li>
       <li>
-        <a href="{{route('Admin.Logout')}}" class="btn border-0">
+        <a href="" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
           Logout
         </a>
