@@ -1,3 +1,21 @@
+:root{
+  --header-bg:#7624fa;
+  --card-bg:rgb(72, 235, 72);
+}
+#header{
+  background-color: var(--header-bg);
+}
 
 
+#card{
+  min-width: 200px;
+  background-color: var(--card-bg);
+  cursor: pointer;
 
+}
+#card img{
+  height: 100px;
+  width: 50%;
+  margin-inline: auto;
+  mix-blend-mode: color-burn;
+}

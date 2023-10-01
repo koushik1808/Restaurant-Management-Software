@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-start sidebar-nav text-light" data-bs-scroll="true" data-bs-backdrop="false"
+<div class="offcanvas offcanvas-start sidebar-nav text-dark" data-bs-scroll="true" data-bs-backdrop="false"
   data-bs-theme="dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h3 class="m-0">Admin</h3>
@@ -118,9 +118,19 @@
 </div>
 
 <style>
+  .sidebar-nav {
+    background: #f8f8f8;
+
+  }
+
   #sidebar-list li {
     background: transparent;
     transition: 400ms ease;
+
+  }
+
+  #sidebar-list li a {
+    color: #000
   }
 
   #sidebar-list li:hover {

@@ -1,12 +1,12 @@
-<div class="row py-2 px-2 justify-content-between navbar-bg text-white sticky-top">
+<div class="row py-2 px-2 justify-content-between text-white sticky-top" id="header">
   <div class="col col-md-5">
     <div class="d-flex h-100 gap-3 align-items-center">
       <button type="button" class="btn btn-warning d-md-none " aria-pressed="true" data-bs-target="#offcanvasExample"
         data-bs-toggle="offcanvas">
         Menus
       </button>
-      <h3 class="m-0 ps-6 fw-bold">Restaurent POS</h3>
-      <button class="btn text-light border border-2 border-warning rounded-pill d-md-inline-flex d-none">
+      <h3 class="m-0 ps-6 fw-bold">POS</h3>
+      <button class="btn text-light border border-2 border-light rounded-pill d-md-inline-flex d-none">
         <i class="bi bi-search"></i>
         <input type="text" id="nav-input" class="text-light" placeholder="Search" />
       </button>
