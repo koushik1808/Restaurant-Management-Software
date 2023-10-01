@@ -108,7 +108,7 @@
         </a>
       </li>
       <li>
-        <a href="" class="btn border-0">
+        <a href="{{route('Admin.Logout')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
           Logout
         </a>
