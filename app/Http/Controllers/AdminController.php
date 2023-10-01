@@ -12,10 +12,7 @@ class AdminController extends Controller
 {
     //
     //
-    public function Dashbroad(){
-        return view('admin.dashbroad');
-        
-    }
+    
 
     public function Login(){
         return view('auth.login');

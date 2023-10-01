@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,12 @@ Route::controller(AdminController::class)->group(function(){
 
 Route::middleware('isLogin')->group(function(){
     Route::controller(AdminController::class)->group(function(){
+       
+    });
+    Route::controller(TableController::class)->group(function(){
+         //
+         Route::get('/Dashbroad','Dashbroad')->name('Admin.Dashbroad');
         //
-        Route::get('/Dashbroad','Dashbroad')->name('Admin.Dashbroad');
-        
+        Route::get('/Billing/{id}','Billing')->name('Admin.Billing');
     });
 });
