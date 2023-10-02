@@ -58,8 +58,19 @@ class TableController extends Controller
     }
     public function delete_menu($id){
         $user = BillingSkack::find($id);
+        $ab=$user->billing_no;
         if(! is_null( $user)){
             $user->delete();
+        }
+        $billing_stack=BillingSkack::where("billing_no",'=',$ab)->get();
+        $cout=$billing_stack->count();
+        if($cout==0){
+            $table=Table::where("billing_status",'=',$ab)->first();
+            $id=$table->id;
+            $table=Table::find($id);
+            $table->status='0';
+            $table->billing_status='0';
+            $table->save();
         }
         return back();
     }
@@ -71,11 +82,22 @@ class TableController extends Controller
     }
     public function count_sub($id){
         $billing_stack = BillingSkack::find($id);
+        $ab=$billing_stack->billing_no;
         if( $billing_stack->count<=1){
             $billing_stack->delete();
         }else{
             $billing_stack->count=$billing_stack->count-1;
             $billing_stack->save();
+        }
+        $billing_stack=BillingSkack::where("billing_no",'=',$ab)->get();
+        $cout=$billing_stack->count();
+        if($cout==0){
+            $table=Table::where("billing_status",'=',$ab)->first();
+            $id=$table->id;
+            $table=Table::find($id);
+            $table->status='0';
+            $table->billing_status='0';
+            $table->save();
         }
         return back();
     }
