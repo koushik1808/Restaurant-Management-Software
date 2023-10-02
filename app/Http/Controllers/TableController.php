@@ -28,6 +28,7 @@ class TableController extends Controller
     public function Billing_print($id){
         $table=Table::find($id);
         $table->status='0';
+        $table->billing_status='0';
         $table->save();
         $data1=compact('table');
         $billing_stack=BillingSkack::where("billing_no",'=',$table->billing_status)->get();
