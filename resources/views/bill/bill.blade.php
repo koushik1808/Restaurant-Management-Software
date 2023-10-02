@@ -11,6 +11,13 @@ Add Bill
 
 @section('hero')
 <div class="container">
+  <div class="row">
+    <div class="w-25">
+      <label for="" class="form-label">Invoice Number</label>
+      <input type="text" class="form-control">
+
+    </div>
+  </div>
   <div class="row mb-3">
     <div class="col py-3 d-flex gap-3">
       <input type="text" class="form-control rounded" placeholder="Enter Menu Code">
