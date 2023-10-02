@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(AdminController::class)->group(function(){
+    //
+    Route::get('/', 'Login')->name('Admin.login');
+    //
+    Route::post('/login_check', 'login_check')->name('Admin.login_check');
+    //
+    Route::get('/logout','Logout')->name('Admin.Logout');
+    
 });
+
+Route::middleware('isLogin')->group(function(){
+    Route::controller(AdminController::class)->group(function(){
+       
+    });
+    Route::controller(TableController::class)->group(function(){
+         //
+         Route::get('/Dashbroad','Dashbroad')->name('Admin.Dashbroad');
+        //
+        Route::get('/Billing/{id}','Billing')->name('Admin.Billing');
+    });
+});
+

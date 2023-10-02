@@ -10,12 +10,18 @@
           alt="Phone image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <form class="py-3 p-md-0">
+        <form action="{{route('Admin.login_check')}}" method="post" class="py-3 p-md-0">
           <!-- Email input -->
+          @csrf
           <div class="form-outline mb-4">
             <label class="form-label" for="form1Example13">Email address</label>
-            <input type="email" id="form1Example13" class="form-control form-control-lg " />
-
+            <input type="email" id="form1Example13" name="email" class="form-control form-control-lg " value="{{old('email')}}" />
+            @if ($errors->has('email'))
+            <p class="form-text text-danger">{{$errors->first('email')}}</p>
+            @endif
+            @if (Session::has('fall_email'))
+            <p class="form-text text-danger">{{Session::get('fall_email')}}</p>
+            @endif
           </div>
 
           <!-- Password input -->
@@ -23,8 +29,13 @@
             <label class="form-label d-flex justify-content-between" for="form1Example23">
               <p>Password</p> <i class='bx bxs-low-vision bx-sm' id="hide-icon"></i>
             </label>
-            <input type="password" id="form-pass" class="form-control form-control-lg" />
-
+            <input type="password" name="password" id="form-pass" class="form-control form-control-lg" />
+            @if ($errors->has('password'))
+            <p class="form-text text-danger">{{$errors->first('password')}}</p>
+            @endif
+            @if (Session::has('fall_password'))
+            <p class="form-text text-danger">{{Session::get('fall_password')}}</p>
+            @endif
           </div>
 
           <div class="d-flex justify-content-between align-items-center mb-4">
