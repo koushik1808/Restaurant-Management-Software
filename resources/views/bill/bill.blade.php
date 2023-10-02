@@ -26,7 +26,8 @@ Add Bill
     </div>
     <div class="row mb-3">
       <div class="col py-3 d-flex gap-3">
-        <input type="text" name="menu_code" class="form-control rounded" @required(true) placeholder="Enter Menu Code">
+        <input type="text" name="menu_code" class="form-control rounded" autofocus @required(true)
+          placeholder="Enter Menu Code">
         @if (Session::has('fall_code'))
         <p class="form-text text-danger">{{Session::get('fall_code')}}</p>
         @endif
@@ -77,8 +78,9 @@ Add Bill
 <div class="row my-4">
   <div class="col">
     <div class="d-flex gap-3 justify-content-center ">
-     <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
-      <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill Total</button></a>
+      <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
+      <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill
+          Total</button></a>
     </div>
   </div>
 </div>
