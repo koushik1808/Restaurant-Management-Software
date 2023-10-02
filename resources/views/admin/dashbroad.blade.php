@@ -28,9 +28,6 @@
         <div class="card-title text-center">
           TABLE T{{$item->table}}
         </div>
-
-
-
       </div>
     </a>
     @endforeach
