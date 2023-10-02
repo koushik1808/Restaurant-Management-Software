@@ -11,19 +11,29 @@ Add Bill
 
 @section('hero')
 <div class="container">
+  <form action="{{route('Admin.addMenu')}}" method="POST">
+    @csrf      
   <div class="row">
     <div class="w-25">
+      <input type="text" name="tableno" hidden value="{{$table->table}}"  class="form-control">
       <label for="" class="form-label">Invoice Number</label>
-      <input type="text" class="form-control">
-
+      @if ($table->billing_status)
+        <input type="text" name="InvoiceNumbe" value="{{$table->billing_status}}"  @readonly(true) class="form-control">
+      @else
+        <input type="text" name="InvoiceNumbe" id="bill_no" @readonly(true)  class="form-control">
+      @endif
     </div>
   </div>
   <div class="row mb-3">
     <div class="col py-3 d-flex gap-3">
-      <input type="text" class="form-control rounded" placeholder="Enter Menu Code">
-      <div class="btn btn-primary">Add Item</div>
+      <input type="text" name="menu_code" class="form-control rounded" @required(true) placeholder="Enter Menu Code">
+      @if (Session::has('fall_code'))
+      <p class="form-text text-danger">{{Session::get('fall_code')}}</p>
+      @endif
+      <div class="btn btn-primary"><button class="btn btn-primary" >Add Item</button></div>
     </div>
   </div>
+</form>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -37,45 +47,38 @@ Add Bill
         </tr>
       </thead>
       <tbody>
+        @php
+        $i=0;
+        @endphp
+        @foreach ($billing_stack as $item)
+                 
         <tr>
-          <td>1</td>
-          <td>123</td>
-          <td>Mushroom Soup</td>
+          <td>{{$i=$i+1}}</td>
+          <td>{{$item->	manu_code}}</td>
+          <td>{{$item->manu}}</td>
           <td>
-            <button class="btn btn-secondary"><i class='bx bx-plus'></i></button>
-            1
-            <button class="btn btn-secondary"><i class='bx bx-minus'></i></button>
+           <a href="{{route('Admin.count_add',['id'=>$item->id])}}"><button class="btn btn-secondary"><i class='bx bx-plus'></i></button></a>
+            {{$item->count}}
+            <a href="{{route('Admin.count_sub',['id'=>$item->id])}}"><button class="btn btn-secondary"><i class='bx bx-minus'></i></button></a>
           </td>
-          <td>230.00</td>
-          <td><button class="btn btn-danger"><i class='bx bxs-trash'></i></button></td>
+          <td>{{$item->price}}</td>
+          <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}"><button class="btn btn-danger"><i class='bx bxs-trash'></i></button></a></td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>123</td>
-          <td>Mushroom Soup</td>
-          <td>
-            <button class="btn btn-secondary"><i class='bx bx-plus'></i></button>
-            1
-            <button class="btn btn-secondary"><i class='bx bx-minus'></i></button>
-          </td>
-          <td>230.00</td>
-          <td><button class="btn btn-danger"><i class='bx bxs-trash'></i></button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>123</td>
-          <td>Mushroom Soup</td>
-          <td>
-            <button class="btn btn-secondary"><i class='bx bx-plus'></i></button>
-            1
-            <button class="btn btn-secondary"><i class='bx bx-minus'></i></button>
-          </td>
-          <td>230.00</td>
-          <td><button class="btn btn-danger"><i class='bx bxs-trash'></i></button></td>
-        </tr>
+        
+        @endforeach
 
       </tbody>
     </table>
   </div>
 </div>
+<script>
+  var d = new Date();
+  var t = new Date().getTime();
+  var randomnum = Math.floor(Math.random() * (1000 - 500000)) + 1000;
+  randomnum = d.getFullYear() + d.getMonth() + d.getDate() + randomnum;
+  randomnum = randomnum + t;
+  console.log(randomnum);
+  document.getElementById('bill_no').value = randomnum;
+  
+  </script>
 @endsection

@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     //
+    public function add_menu(){
+        return "hello";
+    }
+    //
     public function view_menu(){
         $menu=Manu::all();
         $catagory= Manu::select('category')->distinct()->get();

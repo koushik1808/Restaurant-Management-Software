@@ -21,8 +21,6 @@ Add Catagory
         <form action="#">
           <label for="" class="form-label">Catagory Name</label>
           <input type="text" class="form-control">
-          <label for="" class="form-label">Menu Items</label>
-          <input type="text" class="form-control">
           <button class="btn btn-success mt-3" type="submit">Add Catagory</button>
         </form>
       </div>

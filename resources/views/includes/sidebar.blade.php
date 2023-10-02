@@ -8,7 +8,7 @@
 
     <ul class="list-unstyled d-flex flex-column gap-3" id="sidebar-list">
       <li class="">
-        <a href="" class="btn">
+        <a href="{{route('Admin.Dashbroad')}}" class="btn">
           <span class="me-2">
             <i class="bi bi-grid-1x2-fill"></i>
           </span>
@@ -24,7 +24,7 @@
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ad-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="ad-collapse">
-          <li><a href="" class="btn">Add Catagory </a></li>
+          <li><a href="{{route('Admin.add_category')}}" class="btn">Add Catagory </a></li>
           <li><a href="{{route('Admin.view_category')}}" class="btn">Manage Catagory </a></li>
         </ul>
       </li>
@@ -36,7 +36,7 @@
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#at-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="at-collapse">
-          <li><a href="#" class="btn"> Add Menu </a></li>
+          <li><a href="{{route('Admin.add_menu')}}" class="btn"> Add Menu </a></li>
           <li><a href="{{route('Admin.view_menu')}}" class="btn"> See All Menus </a></li>
         </ul>
       </li>
@@ -49,7 +49,7 @@
           aria-expanded="false"></button>
         <ul class="collapse" id="fe-collapse">
           <li><a href="#" class="btn"> Add Table </a></li>
-          <li><a href="#" class="btn"> See All Tables </a></li>
+          <li><a href="{{route('Admin.Dashbroad')}}" class="btn"> See All Tables </a></li>
           <li><a href="#" class="btn">Manage Tables</a></li>
 
         </ul>
