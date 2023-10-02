@@ -25,7 +25,7 @@
           aria-expanded="false"></button>
         <ul class="collapse" id="ad-collapse">
           <li><a href="" class="btn">Add Catagory </a></li>
-          <li><a href="" class="btn">Manage Catagory </a></li>
+          <li><a href="{{route('Admin.view_category')}}" class="btn">Manage Catagory </a></li>
         </ul>
       </li>
       <li>
@@ -37,7 +37,7 @@
           aria-expanded="false"></button>
         <ul class="collapse" id="at-collapse">
           <li><a href="#" class="btn"> Add Menu </a></li>
-          <li><a href="#" class="btn"> See All Menus </a></li>
+          <li><a href="{{route('Admin.view_menu')}}" class="btn"> See All Menus </a></li>
         </ul>
       </li>
       <li>
