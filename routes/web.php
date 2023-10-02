@@ -16,6 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::view('/auth', 'auth.login');
-Route::view('/dash', 'admin.dashbroad');
-Route::view('/menus', 'menus.menu');
