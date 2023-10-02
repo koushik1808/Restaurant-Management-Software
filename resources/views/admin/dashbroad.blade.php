@@ -22,7 +22,8 @@
   </div>
   <div class="row gap-lg-4 gap-2 justify-content-center flex-column flex-sm-row">
     @foreach ($table as $item)
-    <a href="{{route('Admin.Billing',['id'=>$item->table])}}" class=" card col col-lg-2 p-0" id="card"">
+    <a href="{{route('Admin.Billing',['id'=>$item->table])}}"
+      class=" card col col-lg-2 p-0 {{$item->status?"bg-danger":""}}" id="card"">
         <img src=" {{ asset('image/table.jpeg') }}" class="card-img-top" alt="table img">
       <div class="card-body">
         <div class="card-title text-center">

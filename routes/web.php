@@ -61,4 +61,4 @@ Route::middleware('isLogin')->group(function(){
     });
 });
 
-Route::view('/bill', 'bill.bill');
+Route::view('/invoice', 'invoice.invoice');
