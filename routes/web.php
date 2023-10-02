@@ -36,6 +36,4 @@ Route::middleware('isLogin')->group(function(){
         Route::get('/Billing/{id}','Billing')->name('Admin.Billing');
     });
 });
-Route::view('/auth', 'auth.login');
-Route::view('/dash', 'admin.dashbroad');
-Route::view('/menus', 'menus.menu');
+
