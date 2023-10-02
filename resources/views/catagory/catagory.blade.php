@@ -29,41 +29,29 @@ Catagory
           <td>Actions</td>
         </tr>
       </thead>
+
       <tbody>
+        @foreach ($category as $cata)
         <tr>
-          <td>1</td>
-          <td>Breakfast</td>
+          <td>{{$cata->id}}</td>
+          <td>{{$cata->category}}</td>
           <td>10</td>
           <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
             <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
           </td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Breakfast</td>
-          <td>10</td>
-          <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-            <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Breakfast</td>
-          <td>10</td>
-          <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-            <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Breakfast</td>
-          <td>10</td>
-          <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-            <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
-          </td>
-        </tr>
+        @endforeach
+
       </tbody>
+
     </table>
   </div>
 </div>
 @endsection
+@push('script')
+{{-- <script>
+  var cata={{Js::from($category)}}
+console.log(cata)
+</script> --}}
+
+@endpush

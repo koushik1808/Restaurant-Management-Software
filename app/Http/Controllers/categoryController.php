@@ -11,6 +11,7 @@ class categoryController extends Controller
     public function view_category(){
         $category=category::all();
         $data=compact('category');
-        return  $data;
+
+        return view("catagory.catagory")->with($data);
     }
 }

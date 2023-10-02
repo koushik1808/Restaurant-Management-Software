@@ -53,206 +53,54 @@
     </div>
     <div class="col-3 d-none d-lg-block">
       <div id="list-example" class="list-group pt-4">
-        <a class="list-group-item list-group-item-action" href="#soup">Soup</a>
-        <a class="list-group-item list-group-item-action" href="#v-starter">Veg Starter</a>
-        <a class="list-group-item list-group-item-action" href="#nv-starter">Non-veg Starter</a>
-        <a class="list-group-item list-group-item-action" href="#fries">Fries</a>
-        <a class="list-group-item list-group-item-action" href="#v-in-main">Veg Indian Main-Course</a>
-        <a class="list-group-item list-group-item-action" href="#nv-in-main">Non-Veg Indian Main-Course</a>
-        <a class="list-group-item list-group-item-action" href="#v-ch-main">Veg Chinese Main-Course</a>
-        <a class="list-group-item list-group-item-action" href="#nv-ch-main">Non-Veg Chinese Main-Course</a>
+        @foreach ($catagory as $menus)
+        <a class="list-group-item list-group-item-action" href="#{{$menus->category}}">{{$menus->category}}</a>
+        @endforeach
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 h-25 overflow-y-hidden">
       <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example"
         tabindex="0">
-        <div id="soup">
-          <h4>Soup</h4>
+
+        @foreach ($catagory as $cata)
+        <div id="{{$cata->category}}">
+          <h4>{{$cata->category}}</h4>
+          @foreach ($menu as $menus)
+          @if ($menus->category==$cata->category)
           <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
+            <div class="card-body p-2">
+              <div class="card-title lead m-0">
                 <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Mushroom Soup
+                {{$menus->Manu_name}}
               </div>
               <div class="hstack justify-content-between align-items-center">
                 <p class="fw-bold ps-3 m-0">
-                  Rs 200.00
+                  Rs {{$menus->Manu_price}}.00
                 </p>
                 <button class="btn btn-success btn-lg">Add</button>
               </div>
 
-
             </div>
           </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Mushroom Soup
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 200.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
+
+          @endif
+
+          @endforeach
 
 
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Mushroom Soup
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 200.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Mushroom Soup
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 200.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
         </div>
-        <div id="v-starter">
-          <h4>Veg Starter</h4>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chilli Panner
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 250.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
 
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chilli Panner
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 250.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chilli Panner
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 250.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chilli Panner
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 250.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-        <div id="nv-starter">
-          <h4>Non-Veg Starter</h4>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chicken Kosha
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 300.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chicken Kosha
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 300.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body ps-2">
-              <div class="card-title lead">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                Chicken Kosha
-              </div>
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs 300.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
 @endsection
+
+@push('script')
+<script>
+  var menu={{Js::from($menu)}}
+  console.log(menu)
+</script>
+
+@endpush
