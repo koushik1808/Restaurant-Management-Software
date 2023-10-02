@@ -18,7 +18,7 @@ Invoice
       <div class="card mx-auto" style="width: fit-content">
         <div class="card-body">
           <p class="card-title fw-medium text-uppercase">Bihari Bhaiya</p>
-          <p class="font-monospace">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="font-monospace">#Invoice id:- {{$bill}}</p>
           <table class="table">
             <thead>
               <tr>
