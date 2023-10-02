@@ -44,6 +44,8 @@ Route::middleware('isLogin')->group(function(){
          Route::get('/count_add/{id}','count_add')->name('Admin.count_add');
           //
           Route::get('/count_sub/{id}','count_sub')->name('Admin.count_sub');
+         //
+         Route::get('/Billing_print/{id}','Billing_print')->name('Admin.Billing_print');
     });
 
     Route::controller(categoryController::class)->group(function(){

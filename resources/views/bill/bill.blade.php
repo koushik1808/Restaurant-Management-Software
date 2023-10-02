@@ -77,8 +77,8 @@ Add Bill
 <div class="row my-4">
   <div class="col">
     <div class="d-flex gap-3 justify-content-center ">
-      <button class="btn btn-success">Checkout</button>
-      <button class="btn btn-warning">Bill Total</button>
+     <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
+      <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill Total</button></a>
     </div>
   </div>
 </div>

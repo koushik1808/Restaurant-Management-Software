@@ -18,8 +18,6 @@ class TableController extends Controller
     //
     public function Billing($id){
         $table=Table::find($id);
-        $table->status='1';
-        $table->save();
         $ab=$table->billing_status;
         $data1=compact('table');
         //return $data1;
@@ -27,10 +25,20 @@ class TableController extends Controller
         $data2=compact('billing_stack');
         return view('bill.bill')->with($data1)->with($data2);
     }
+    public function Billing_print($id){
+        $table=Table::find($id);
+        $table->status='0';
+        $table->save();
+        $data1=compact('table');
+        $billing_stack=BillingSkack::where("billing_no",'=',$table->billing_status)->get();
+        $data2=compact('billing_stack');
+        return view('invoice.invoice')->with($data1)->with($data2);
+    }
     public function addMenu( Request $request){
 
         $table=Table::find($request->tableno);
         if($table->billing_status==0){
+            $table->status='1';
             $table->billing_status=$request['InvoiceNumbe'];
             $table->save();
         }

@@ -5,7 +5,7 @@
         data-bs-toggle="offcanvas">
         Menus
       </button>
-      <h3 class="m-0 ps-6 fw-bold">POS</h3>
+      <h3 class="m-0 ps-6 fw-bold">RestroRover</h3>
       <button class="btn text-light border border-2 border-light rounded-pill d-md-inline-flex d-none">
         <i class="bi bi-search"></i>
         <input type="text" id="nav-input" class="text-light" placeholder="Search" />
