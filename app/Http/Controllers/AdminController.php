@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\admin;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -29,7 +29,7 @@ class AdminController extends Controller
         $user=admin::where("email",'=',$request->input('email') )->first();
        
         if($user){
-            if($user->password==$request->password){
+            if(Hash::check($request->password,$user->password)){
                 $request->session()->put('LoginName',$user->name);
                 return redirect()->route('Admin.Dashbroad');
             }
