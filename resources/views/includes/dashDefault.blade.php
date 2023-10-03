@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid overflow-auto vh-100">
       {{-- header  --}}
       @include('includes.header')
       {{-- header end --}}
