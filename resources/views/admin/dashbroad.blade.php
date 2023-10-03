@@ -24,7 +24,7 @@
     @foreach ($table as $item)
     <a href="{{route('Admin.Billing',['id'=>$item->table])}}"
       class=" card col col-lg-2 p-0 {{$item->status?"bg-danger":""}}" id="card"">
-        <img src=" {{ asset('image/table.jpeg') }}" class="card-img-top" alt="table img">
+        <img src=" {{ asset('public/image/table.jpeg') }}" class="card-img-top" alt="table img">
       <div class="card-body">
         <div class="card-title text-center">
           TABLE T{{$item->table}}
