@@ -70,7 +70,7 @@
           <div class="card mb-3">
             <div class="card-body p-2">
               <div class="card-title lead m-0">
-                <img src="{{ asset('image/veg.png') }}" class="img-fluid" alt="veg-logo">
+                <img src="{{ asset('public/image/veg.png') }}" class="img-fluid" alt="veg-logo">
                 {{$menus->Manu_name}}
               </div>
               <div class="hstack justify-content-between align-items-center">
