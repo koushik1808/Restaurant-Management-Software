@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Manu extends Model
 {
     use HasFactory;
-    protected $table ="manus";
-    protected $primaryKey="id";
+    protected $table = "manus";
+    protected $primaryKey = "id";
 }

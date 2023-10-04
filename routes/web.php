@@ -17,50 +17,52 @@ use App\Http\Controllers\TableController;
 |
 */
 
-Route::controller(AdminController::class)->group(function(){
+Route::controller(AdminController::class)->group(function () {
     //
     Route::get('/', 'Login')->name('Admin.login');
     //
     Route::post('/login_check', 'login_check')->name('Admin.login_check');
     //
-    Route::get('/logout','Logout')->name('Admin.Logout');
-    
+    Route::get('/logout', 'Logout')->name('Admin.Logout');
+
 });
 
-Route::middleware('isLogin')->group(function(){
-    Route::controller(AdminController::class)->group(function(){
-       
+Route::middleware('isLogin')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+
     });
-    Route::controller(TableController::class)->group(function(){
-         //
-         Route::get('/Dashbroad','Dashbroad')->name('Admin.Dashbroad');
+    Route::controller(TableController::class)->group(function () {
         //
-        Route::get('/Billing/{id}','Billing')->name('Admin.Billing');
+        Route::get('/Dashbroad', 'Dashbroad')->name('Admin.Dashbroad');
         //
-        Route::post('/addMenu','addMenu')->name('Admin.addMenu');
+        Route::get('/Billing/{id}', 'Billing')->name('Admin.Billing');
         //
-        Route::get('/delete_menu/{id}','delete_menu')->name('Admin.delete_menu');
+        Route::get('/Billing2/{id}', 'Billing2')->name('Admin.Billing2');
          //
-         Route::get('/count_add/{id}','count_add')->name('Admin.count_add');
-          //
-          Route::get('/count_sub/{id}','count_sub')->name('Admin.count_sub');
-         //
-         Route::get('/Billing_print/{id}','Billing_print')->name('Admin.Billing_print');
+         Route::post('/addMenu2', 'addMenu2')->name('Admin.addMenu2');
+        //
+        Route::post('/addMenu', 'addMenu')->name('Admin.addMenu');
+        //
+        Route::get('/delete_menu/{id}', 'delete_menu')->name('Admin.delete_menu');
+        //
+        Route::get('/count_add/{id}', 'count_add')->name('Admin.count_add');
+        //
+        Route::get('/count_sub/{id}', 'count_sub')->name('Admin.count_sub');
+        //
+        Route::get('/Billing_print/{id}', 'Billing_print')->name('Admin.Billing_print');
     });
 
-    Route::controller(categoryController::class)->group(function(){
-       //
-       Route::get('/view_category','view_category')->name('Admin.view_category');
-       //
-       Route::get('/add_category','add_category')->name('Admin.add_category');
+    Route::controller(categoryController::class)->group(function () {
+        //
+        Route::get('/view_category', 'view_category')->name('Admin.view_category');
+        //
+        Route::get('/add_category', 'add_category')->name('Admin.add_category');
     });
 
-    Route::controller(MenuController::class)->group(function(){
-       //
-       Route::get('/view_menu','view_menu')->name('Admin.view_menu');
-       //
-       Route::get('/add_menu','add_menu')->name('Admin.add_menu');
+    Route::controller(MenuController::class)->group(function () {
+        //
+        Route::get('/view_menu', 'view_menu')->name('Admin.view_menu');
+        //
+        Route::get('/add_menu', 'add_menu')->name('Admin.add_menu');
     });
 });
-
-Route::view('/invoice', 'invoice.invoice');

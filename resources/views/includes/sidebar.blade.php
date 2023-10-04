@@ -39,8 +39,8 @@
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#at-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="at-collapse">
-          <li><a href="{{route('Admin.add_menu')}}" class="btn"> Add Menu </a></li>
-          <li><a href="{{route('Admin.view_menu')}}" class="btn"> See All Menus </a></li>
+          <li><a href="#" class="btn"> Add Menu </a></li>
+          <li><a href="#" class="btn"> See All Menus </a></li>
         </ul>
       </li>
       <li>

@@ -1,6 +1,6 @@
 {{-- extend base layout --}}
 @extends('includes.dashDefault')
-@section('crumb',"Menus")
+@section('crumb', 'Menus')
 
 @section('hero')
 <div class="container">
@@ -31,10 +31,20 @@
               <div class="row">
                 <div class="col">
                   <div id="list-example" class="list-group pt-4" data-bs-dismiss="modal">
-                    @foreach ($catagory as $menus)
-                    <a class="list-group-item list-group-item-action"
-                      href="#{{$menus->category}}">{{$menus->category}}</a>
-                    @endforeach
+                    <a class="list-group-item list-group-item-action" href="#soup">Soup</a>
+                    <a class="list-group-item list-group-item-action" href="#v-starter">Veg
+                      Starter</a>
+                    <a class="list-group-item list-group-item-action" href="#nv-starter">Non-veg
+                      Starter</a>
+                    <a class="list-group-item list-group-item-action" href="#fries">Fries</a>
+                    <a class="list-group-item list-group-item-action" href="#v-in-main">Veg Indian
+                      Main-Course</a>
+                    <a class="list-group-item list-group-item-action" href="#nv-in-main">Non-Veg
+                      Indian Main-Course</a>
+                    <a class="list-group-item list-group-item-action" href="#v-ch-main">Veg Chinese
+                      Main-Course</a>
+                    <a class="list-group-item list-group-item-action" href="#nv-ch-main">Non-Veg
+                      Chinese Main-Course</a>
                   </div>
                 </div>
               </div>
@@ -59,33 +69,34 @@
         class="scrollspy-example overflow-y-scroll" tabindex="0" id="scroll-menu">
 
         @foreach ($catagory as $cata)
-        <div id="{{$cata->category}}">
-          <h4>{{$cata->category}}</h4>
+        <div id="{{ $cata->category }}">
+          <h4>{{ $cata->category }}</h4>
           @foreach ($menu as $menus)
-          @if ($menus->category==$cata->category)
+          @if ($menus->category == $cata->category)
           <div class="card mb-3">
             <div class="card-body p-2">
+              <form action="{{route('Admin.addMenu2')}}" method="POST">
+                @csrf
               <div class="card-title lead m-0">
                 <img src="{{ asset('public/image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                {{$menus->Manu_name}}
+                {{ $menus->Manu_name }}
               </div>
+              <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+              <input type="text" name="menuid" hidden  value="{{$menus->id}}" class="form-control">
               <div class="hstack justify-content-between align-items-center">
                 <p class="fw-bold ps-3 m-0">
-                  Rs {{$menus->Manu_price}}.00
+                  Rs {{ $menus->Manu_price }}.00
                 </p>
                 <button class="btn btn-success btn-lg">Add</button>
               </div>
-
+            </form>
             </div>
           </div>
-
           @endif
-
           @endforeach
 
 
         </div>
-
         @endforeach
       </div>
     </div>
@@ -117,7 +128,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{-- @php
+                 @php
                 $i=0;
                 @endphp
                 @foreach ($billing_stack as $item)
@@ -136,28 +147,16 @@
                 <td>{{$item->price}}</td>
                 <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}"><button class="btn btn-danger"><i
                         class='bx bxs-trash'></i></button></a></td>
-                </tr> --}}
-
-
-                <tr>
-                  <td>1</td>
-                  <td>201</td>
-                  <td>Mushromm </td>
-                  <td><a href="#"><button class="btn btn-secondary"><i class='bx bx-plus'></i></button></a>
-                    1
-                    <a href="#"><button class="btn btn-secondary"><i class='bx bx-minus'></i></button></a>
-                  </td>
-                  <td>99.00</td>
-                  <td><a href=""><button class="btn btn-danger"><i class='bx bxs-trash'></i></button></a></td>
                 </tr>
-
+                @endforeach
+               
               </tbody>
             </table>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">Checkout</button>
-          <button type="button" class="btn btn-warning">Bill Total</button>
+          <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill Total</button></a>
         </div>
       </div>
     </div>
@@ -180,9 +179,6 @@
 
 @endpush
 @push('script')
-{{-- <script>
-  var menu={{Js::from($menu)}}
-console.log(menu)
-</script> --}}
+
 
 @endpush

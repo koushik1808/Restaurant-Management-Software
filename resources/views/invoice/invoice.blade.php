@@ -3,7 +3,7 @@
 
 {{-- crumb section --}}
 @section('crumb')
-Invoice 
+Invoice
 
 @endsection
 @section('hero')
@@ -37,7 +37,7 @@ Invoice
               @foreach ($billing_stack as $item)
               <tr>
                 @php
-                    $total=$total+$item->count*$item->price;
+                $total=$total+$item->count*$item->price;
                 @endphp
                 <td class="font-monospace">{{$i=$i+1}}</td>
                 <td class="font-monospace">{{$item->manu}}</td>

@@ -35,7 +35,7 @@ Catagory
         <tr>
           <td>{{$cata->id}}</td>
           <td>{{$cata->category}}</td>
-          <td>10</td>
+          <td>{{$cata->category}} </td>
           <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
             <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
           </td>
@@ -50,7 +50,7 @@ Catagory
 @endsection
 @push('script')
 {{-- <script>
-  var cata={{Js::from($category)}}
+  var cata={{Js::from($cataMenu)}}
 console.log(cata)
 </script> --}}
 
