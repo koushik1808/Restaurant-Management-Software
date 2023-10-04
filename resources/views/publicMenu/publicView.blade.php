@@ -1,15 +1,31 @@
-{{-- extend base layout --}}
-@extends('includes.dashDefault')
+{{-- extednd base layout --}}
+@extends('includes.default')
 
-@section('crumb')
-Public Menus
-
-@endsection
-
-{{-- main section --}}
 @section('hero')
-
-<div class="container">
+<div class="container-fluid py-3" style="background: rgb(96, 4, 255)">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex h-100 gap-3 align-items-center">
+        <h3 class="m-0 ps-6 fw-bold text-light">RestroRover</h3>
+        <button class="btn text-light border border-2 border-light rounded-pill d-md-inline-flex d-none">
+          <i class="bi bi-search"></i>
+          <input type="text" class="text-light" placeholder="Search" id="input" />
+        </button>
+      </div>
+    </div>
+    <div class="col  gap-2 d-none d-md-flex">
+      <p class="text-light fs2">Contract Email</p>
+      <p class="text-light fs2">Contract Number</p>
+    </div>
+    <div class="col">
+      <div class="d-flex justify-content-end gap-3 text-light">
+        <i class='bx bxl-facebook-circle bx-md bx-tada-hover'></i>
+        <i class='bx bxl-instagram-alt bx-md bx-tada-hover'></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-4">
   <div class="row">
     <div class="fixed-bottom z-9 d-lg-none">
       <button class="btn btn-danger fixed-bottom w-25 mx-auto" data-bs-target="#modal-menu" data-bs-toggle="modal">
@@ -93,6 +109,12 @@ Public Menus
   #scroll-menu {
     height: calc(100vh - 100px);
     overflow-y: scroll;
+  }
+
+  #input {
+    border: 0;
+    background: transparent;
+    outline: none
   }
 </style>
 

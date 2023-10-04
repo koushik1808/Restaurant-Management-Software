@@ -30,7 +30,7 @@ class MenuController extends Controller
         $catagory = Manu::select('category')->distinct()->get();
         $cataData = compact('catagory');
         $data = compact('menu');
-        return view('publicMenu.menus', )->with($data)->with($cataData);
+        return view('publicMenu.publicView', )->with($data)->with($cataData);
     }
      //
      public function added_menu(Request $request){

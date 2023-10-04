@@ -2,9 +2,8 @@
   data-bs-theme="dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h3 class="m-0">Admin</h3>
-    <button type="button" class="btn btn-secondary btn ms-auto d-md-none" data-bs-dismiss="offcanvas"
-      aria-label="Close">
-      <i class='bx bxs-x-circle bx-md'></i>
+    <button type="button" class="btn btn-danger btn ms-auto d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class='bx bxs-x-circle'></i>
     </button>
   </div>
   <div class="offcanvas-body p-0">
