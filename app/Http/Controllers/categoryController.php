@@ -22,4 +22,12 @@ class categoryController extends Controller
         $data = compact('category');
         return view("catagory.catagory")->with($data);
     }
+    //
+    public function added_category(Request $request){
+        $category=new category();
+        $category->category=$request['catagory'];
+        $category->save();
+        return redirect()->route('Admin.Dashbroad');
+    }
+   
 }

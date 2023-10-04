@@ -18,27 +18,33 @@ Add Catagory
         Add Menu
       </div>
       <div class="card-body">
-        <form action="#">
+        <form action="{{route('Admin.added_menu')}}" method="POST">
+          @csrf
           <div class="mb-3">
             <label for="" class="form-label">Menu Code </label>
-            <input type="text" class="form-control">
+            <input type="text" name="menu_code" class="form-control">
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Menu Name </label>
-            <input type="text" class="form-control">
+            <input type="text" name="menu_name" class="form-control">
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Menu Catagory </label>
-            <input type="text" class="form-control">
+            <select name="menu_category" class="form-control">
+              @foreach ($category as $item)
+              <option>{{$item->category}}</option>
+              @endforeach
+              
+            </select>
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Menu Price </label>
-            <input type="text" class="form-control">
+            <input type="text" name="menu_price" class="form-control">
           </div>
 
           <div class="mb-3">
             <label for="" class="form-label">Menu Description </label>
-            <input type="text" class="form-control">
+            <input type="text" name="menu_dis" class="form-control">
           </div>
           <button class="btn btn-success mt-3" type="submit">Add Menu</button>
         </form>

@@ -150,10 +150,6 @@ class TableController extends Controller
         }
         return back();
     }
-
-    public function addNewMenu(){
-        return view('menus.addMenu');
-    }
     //
     public function Kitchen($id){
         $table = Table::find($id);

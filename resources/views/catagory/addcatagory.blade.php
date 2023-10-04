@@ -18,9 +18,10 @@ Add Catagory
         Add Catagory
       </div>
       <div class="card-body">
-        <form action="#">
+        <form action="{{route('Admin.added_category')}}" method="POST">
+          @csrf
           <label for="" class="form-label">Catagory Name</label>
-          <input type="text" class="form-control">
+          <input type="text" name="catagory" class="form-control">
           <button class="btn btn-success mt-3" type="submit">Add Catagory</button>
         </form>
       </div>

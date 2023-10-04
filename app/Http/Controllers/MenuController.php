@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Manu;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -9,9 +10,10 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     //
-    public function add_menu()
-    {
-        return "hello";
+    public function addNewMenu(){
+        $category=category::all();
+        $data = compact('category');
+        return view('menus.addMenu')->with($data);
     }
     //
     public function view_menu()
@@ -29,5 +31,18 @@ class MenuController extends Controller
         $cataData = compact('catagory');
         $data = compact('menu');
         return view('publicMenu.menus', )->with($data)->with($cataData);
+    }
+     //
+     public function added_menu(Request $request){
+        $category=category::where("category", '=', $request->input('menu_category'))->first();
+        $menu=new Manu();
+        $menu->Manu_code=$request['menu_code'];
+        $menu->Manu_name=$request['menu_name'];
+        $menu->category=$request['menu_category'];
+        $menu->category_id= $category->id;
+        $menu->Manu_dis=$request['menu_price'];
+        $menu->Manu_price=$request['menu_dis'];
+        $menu->save();
+        return redirect()->route('Admin.Dashbroad');
     }
 }

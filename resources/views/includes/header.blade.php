@@ -35,12 +35,12 @@
                 class="rounded rounded-circle" alt="" style="width: 30px; height: 30px" />
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="{{route('Admin.Profile')}}">Profile</a></li>
               <li>
-                <a class="dropdown-item" href="#">Change Password</a>
+                <a class="dropdown-item" href="{{route('Admin.Change_Password')}}">Change Password</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="{{route('Admin.Logout')}}">Logout</a>
               </li>
             </ul>
           </div>
