@@ -22,4 +22,12 @@ class MenuController extends Controller
         $data = compact('menu');
         return view('menus.menu', )->with($data)->with($cataData);
     }
+    public function view_public_menu()
+    {
+        $menu = Manu::all();
+        $catagory = Manu::select('category')->distinct()->get();
+        $cataData = compact('catagory');
+        $data = compact('menu');
+        return view('publicMenu.menus', )->with($data)->with($cataData);
+    }
 }

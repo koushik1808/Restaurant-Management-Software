@@ -38,8 +38,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/Billing/{id}', 'Billing')->name('Admin.Billing');
         //
         Route::get('/Billing2/{id}', 'Billing2')->name('Admin.Billing2');
-         //
-         Route::post('/addMenu2', 'addMenu2')->name('Admin.addMenu2');
+        //
+        Route::post('/addMenu2', 'addMenu2')->name('Admin.addMenu2');
         //
         Route::post('/addMenu', 'addMenu')->name('Admin.addMenu');
         //
@@ -64,5 +64,7 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/view_menu', 'view_menu')->name('Admin.view_menu');
         //
         Route::get('/add_menu', 'add_menu')->name('Admin.add_menu');
+        // route for public menu
+        Route::get('/public_menu', 'view_public_menu')->name('public_menu');
     });
 });

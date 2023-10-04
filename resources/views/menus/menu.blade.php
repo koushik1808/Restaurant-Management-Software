@@ -31,20 +31,10 @@
               <div class="row">
                 <div class="col">
                   <div id="list-example" class="list-group pt-4" data-bs-dismiss="modal">
-                    <a class="list-group-item list-group-item-action" href="#soup">Soup</a>
-                    <a class="list-group-item list-group-item-action" href="#v-starter">Veg
-                      Starter</a>
-                    <a class="list-group-item list-group-item-action" href="#nv-starter">Non-veg
-                      Starter</a>
-                    <a class="list-group-item list-group-item-action" href="#fries">Fries</a>
-                    <a class="list-group-item list-group-item-action" href="#v-in-main">Veg Indian
-                      Main-Course</a>
-                    <a class="list-group-item list-group-item-action" href="#nv-in-main">Non-Veg
-                      Indian Main-Course</a>
-                    <a class="list-group-item list-group-item-action" href="#v-ch-main">Veg Chinese
-                      Main-Course</a>
-                    <a class="list-group-item list-group-item-action" href="#nv-ch-main">Non-Veg
-                      Chinese Main-Course</a>
+                    @foreach ($catagory as $menus)
+                    <a class="list-group-item list-group-item-action text-truncate"
+                      href="#{{$menus->category}}">{{$menus->category}}</a>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -144,12 +134,12 @@
                     <a href="{{route('Admin.count_add',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
                           class='bx bx-plus'></i></button></a>
                     {{$item->count}}
-                    <a href="{{route('Admin.count_sub',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
-                          class='bx bx-minus'></i></button></a>
+                    <a href="{{route('Admin.count_sub',['id'=>$item->id])}}" class="btn btn-secondary"><i
+                        class='bx bx-minus'></i></a>
                   </td>
                   <td>{{$item->price}}</td>
-                  <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}"><button class="btn btn-danger"><i
-                          class='bx bxs-trash'></i></button></a></td>
+                  <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}" class="btn btn-danger">
+                      <i class='bx bxs-trash'></i></a></td>
                 </tr>
                 @endforeach
 
@@ -158,9 +148,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill
-              Total</button></a>
+          <a href="#" class="btn btn-info">Kitchen<i class='bx bxs-printer'></i></a>
+          <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Bill
+            Total</a>
         </div>
       </div>
     </div>
