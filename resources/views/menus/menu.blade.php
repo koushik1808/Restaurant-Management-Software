@@ -77,19 +77,19 @@
             <div class="card-body p-2">
               <form action="{{route('Admin.addMenu2')}}" method="POST">
                 @csrf
-              <div class="card-title lead m-0">
-                <img src="{{ asset('public/image/veg.png') }}" class="img-fluid" alt="veg-logo">
-                {{ $menus->Manu_name }}
-              </div>
-              <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
-              <input type="text" name="menuid" hidden  value="{{$menus->id}}" class="form-control">
-              <div class="hstack justify-content-between align-items-center">
-                <p class="fw-bold ps-3 m-0">
-                  Rs {{ $menus->Manu_price }}.00
-                </p>
-                <button class="btn btn-success btn-lg">Add</button>
-              </div>
-            </form>
+                <div class="card-title lead m-0">
+                  <img src="{{ asset('public/image/veg.png') }}" class="img-fluid" alt="veg-logo">
+                  {{ $menus->Manu_name }}
+                </div>
+                <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+                <input type="text" name="menuid" hidden value="{{$menus->id}}" class="form-control">
+                <div class="hstack justify-content-between align-items-center">
+                  <p class="fw-bold ps-3 m-0">
+                    Rs {{ $menus->Manu_price }}.00
+                  </p>
+                  <button class="btn btn-success btn-lg">Add</button>
+                </div>
+              </form>
             </div>
           </div>
           @endif
@@ -103,8 +103,10 @@
   </div>
 
   <div class="fixed-bottom w-25 ms-auto text-center">
-    <button class="btn btn-warning rounded-circle z-1" data-bs-toggle="modal" data-bs-target="#cart-model">
+    <button class="btn btn-warning rounded-circle z-1 position-relative" data-bs-toggle="modal"
+      data-bs-target="#cart-model">
       <i class='bx bxs-cart bx-md'></i>
+      <span class="badge position-absolute top-0 end-0 bg-danger rounded-circle">{{ $stackCount }}</span>
     </button>
   </div>
   <div class="modal fade" id="cart-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,35 +130,37 @@
                 </tr>
               </thead>
               <tbody>
-                 @php
+                @php
                 $i=0;
                 @endphp
+
                 @foreach ($billing_stack as $item)
 
                 <tr>
                   <td>{{$i=$i+1}}</td>
-                <td>{{$item->	manu_code}}</td>
-                <td>{{$item->manu}}</td>
-                <td>
-                  <a href="{{route('Admin.count_add',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
-                        class='bx bx-plus'></i></button></a>
-                  {{$item->count}}
-                  <a href="{{route('Admin.count_sub',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
-                        class='bx bx-minus'></i></button></a>
-                </td>
-                <td>{{$item->price}}</td>
-                <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}"><button class="btn btn-danger"><i
-                        class='bx bxs-trash'></i></button></a></td>
+                  <td>{{$item->	manu_code}}</td>
+                  <td>{{$item->manu}}</td>
+                  <td>
+                    <a href="{{route('Admin.count_add',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
+                          class='bx bx-plus'></i></button></a>
+                    {{$item->count}}
+                    <a href="{{route('Admin.count_sub',['id'=>$item->id])}}"><button class="btn btn-secondary"><i
+                          class='bx bx-minus'></i></button></a>
+                  </td>
+                  <td>{{$item->price}}</td>
+                  <td><a href="{{route('Admin.delete_menu',['id'=>$item->id])}}"><button class="btn btn-danger"><i
+                          class='bx bxs-trash'></i></button></a></td>
                 </tr>
                 @endforeach
-               
+
               </tbody>
             </table>
           </div>
         </div>
         <div class="modal-footer">
           <a href="{{route('Admin.Dashbroad')}}"> <button class="btn btn-success">Checkout</button></a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill Total</button></a>
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}"><button class="btn btn-warning">Bill
+              Total</button></a>
         </div>
       </div>
     </div>

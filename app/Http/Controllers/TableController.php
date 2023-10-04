@@ -41,12 +41,14 @@ class TableController extends Controller
 
         $billing_stack = BillingSkack::where("billing_no", '=', $ab)->get();
         $data2 = compact('billing_stack');
-        return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData);
+        $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
+
+        return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'));
     }
     //
     public function addMenu2(Request $request)
     {
-        $bill_no = rand(1000000,9999999);
+        $bill_no = rand(1000000, 9999999);
 
         $table = Table::find($request->tableno);
         if ($table->billing_status == 0) {
@@ -57,7 +59,7 @@ class TableController extends Controller
         $menu = Manu::find($request->menuid);
         if ($menu) {
             $billing_stack = new BillingSkack();
-            $billing_stack->billing_no =  $table->billing_status;
+            $billing_stack->billing_no = $table->billing_status;
             $billing_stack->manu_code = $menu->Manu_code;
             $billing_stack->manu = $menu->Manu_name;
             $billing_stack->price = $menu->Manu_price;

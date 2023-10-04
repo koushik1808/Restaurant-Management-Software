@@ -49,8 +49,8 @@ Invoice
             </tbody>
           </table>
           <div class="vstack align-items-start">
-            <p>Total Sale:{{$total}}</p>
-            <p>Netpayble:{{$total}}</p>
+            <p>Total Amount:{{$total}}</p>
+            <p>NetPayble:{{$total}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Thank You Visit Again</p>
           </div>
