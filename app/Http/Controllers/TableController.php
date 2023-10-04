@@ -150,4 +150,20 @@ class TableController extends Controller
         }
         return back();
     }
+
+    public function addNewMenu(){
+        return view('menus.addMenu');
+    }
+    //
+    public function Kitchen($id){
+        $table = Table::find($id);
+        $data1 = compact('table');
+        $billing_stack = BillingSkack::where("billing_no", '=', $table->billing_status)->where("status", '=','0')->get();
+        foreach($billing_stack as $billing_stack1){
+            $billing_stack1->status ='1';
+            $billing_stack1->save();
+        }
+        $data2 = compact('billing_stack');
+        return view('invoice.kitchenInvoice')->with($data2)->with( $data1);
+    }
 }

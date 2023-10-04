@@ -37,6 +37,7 @@ Invoice
               @foreach ($billing_stack as $item)
               <tr>
                 @php
+              
                 $total=$total+$item->count*$item->price;
                 @endphp
                 <td class="font-monospace">{{$i=$i+1}}</td>

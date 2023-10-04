@@ -39,8 +39,8 @@
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#at-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="at-collapse">
-          <li><a href="#" class="btn"> Add Menu </a></li>
-          <li><a href="{{ route('public_menu') }}" class="btn"> See All Menus </a></li>
+          <li><a href="{{route('Admin.addNewMenu')}}" class="btn"> Add Menu </a></li>
+          <li><a href="{{ route('Admin.public_menu') }}" class="btn"> See All Menus </a></li>
         </ul>
       </li>
       <li>
@@ -52,8 +52,8 @@
           aria-expanded="false"></button>
         <ul class="collapse" id="fe-collapse">
           <li><a href="#" class="btn"> Add Table </a></li>
-          <li><a href="{{route('Admin.Dashbroad')}}" class="btn"> See All Tables </a></li>
-          <li><a href="#" class="btn">Manage Tables</a></li>
+          <li><a href="#" class="btn"> See All Tables </a></li>
+          <li><a href="{{route('Admin.Dashbroad')}}" class="btn">Manage Tables</a></li>
 
         </ul>
       </li>
@@ -95,7 +95,7 @@
 
       <hr class="hr" />
       <li>
-        <a href="#" class="btn border-0">
+        <a href="{{route('Admin.Profile')}}" class="btn border-0">
           <span>
             <img
               src="https://images.pexels.com/photos/15242091/pexels-photo-15242091/free-photo-of-man-posing-to-photo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -105,7 +105,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="btn border-0">
+        <a href="{{route('Admin.Change_Password')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
           Change Password
         </a>

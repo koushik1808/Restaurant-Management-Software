@@ -43,6 +43,14 @@ class AdminController extends Controller
 
     }
 
+    public function  Profile(){
+        return view('profile.profile');
+    }
+
+    public function Change_Password(){
+        return view('profile.changePass');
+    }
+
     public function Logout()
     {
         if (Session::has('LoginName')) {

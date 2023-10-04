@@ -148,7 +148,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-info">Kitchen<i class='bx bxs-printer'></i></a>
+          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">Kitchen<i class='bx bxs-printer'></i></a>
           <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
           <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Bill
             Total</a>

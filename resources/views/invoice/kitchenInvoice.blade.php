@@ -18,8 +18,8 @@ Invoice
       <div class="card mx-auto" style="width: fit-content">
         <div class="card-body">
           <p class="card-title fw-medium text-uppercase">Bihari Bhaiya</p>
-          <p class="font-monospace">#Invoice id:- 000</p>
-          <p class="font-monospace">Table-No:10</p>
+          <p class="font-monospace">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="font-monospace">Table-No:{{$table->table}}</p>
           <table class="table">
             <thead>
               <tr>
@@ -29,27 +29,18 @@ Invoice
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="font-monospace">1</td>
-                <td class="font-monospace">Soup</td>
-                <td class="font-monospace">2</td>
-              </tr>
-              {{-- @php
+             
+               @php
               $i=0;
-              $total=0;
               @endphp
               @foreach ($billing_stack as $item)
               <tr>
-                @php
-                $total=$total+$item->count*$item->price;
-                @endphp
+                
                 <td class="font-monospace">{{$i=$i+1}}</td>
               <td class="font-monospace">{{$item->manu}}</td>
-              <td class="font-monospace">{{$item->price}}</td>
               <td class="font-monospace"> {{$item->count}}</td>
-              <td class="font-monospace"> {{$item->count*$item->price}}</td>
               </tr>
-              @endforeach --}}
+              @endforeach 
             </tbody>
           </table>
           <div class="vstack align-items-start">

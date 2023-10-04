@@ -29,7 +29,10 @@ Route::controller(AdminController::class)->group(function () {
 
 Route::middleware('isLogin')->group(function () {
     Route::controller(AdminController::class)->group(function () {
-
+        //
+        Route::get('/Profile', 'Profile')->name('Admin.Profile');
+        //
+        Route::get('/Change_Password', 'Change_Password')->name('Admin.Change_Password');
     });
     Route::controller(TableController::class)->group(function () {
         //
@@ -50,6 +53,10 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/count_sub/{id}', 'count_sub')->name('Admin.count_sub');
         //
         Route::get('/Billing_print/{id}', 'Billing_print')->name('Admin.Billing_print');
+        //
+        Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
+        //
+        Route::get('/addNewMenu', 'addNewMenu')->name('Admin.addNewMenu');
     });
 
     Route::controller(categoryController::class)->group(function () {
@@ -65,6 +72,6 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::get('/add_menu', 'add_menu')->name('Admin.add_menu');
         // route for public menu
-        Route::get('/public_menu', 'view_public_menu')->name('public_menu');
+        Route::get('/public_menu', 'view_public_menu')->name('Admin.public_menu');
     });
 });
