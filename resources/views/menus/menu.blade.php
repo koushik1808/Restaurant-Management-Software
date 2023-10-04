@@ -14,7 +14,7 @@
   <div class="row justify-content-center">
     <div class="fixed-bottom z-9 d-lg-none">
       <button class="btn btn-danger fixed-bottom w-25 mx-auto" data-bs-target="#modal-menu" data-bs-toggle="modal">
-        <i class='bx bxs-food-menu bx-md bx-tada-hover' style="color: #fff"></i>
+        <i class='bx bxs-food-menu bx-md bx-tada-hover' style="color: #ffffff"></i>
       </button>
 
 
@@ -97,7 +97,7 @@
     </button>
   </div>
   <div class="modal fade" id="cart-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-md-down">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">MenuItems Cart</h1>
