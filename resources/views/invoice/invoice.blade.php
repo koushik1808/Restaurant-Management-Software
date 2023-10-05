@@ -17,8 +17,14 @@ Invoice
     <div class="col text-center">
       <div class="card mx-auto" style="width: fit-content">
         <div class="card-body">
-          <p class="card-title fw-medium text-uppercase">Bihari Bhaiya</p>
-          <p class="font-monospace">#Invoice id:- {{$bill}}</p>
+          <p class="card-title fw-medium text-uppercase" id="in-title">Bihari Bhaiya</p>
+          <p class="font-monospace text-end fw-bold">Hotel &amp; Restaurant</p>
+          <div class="vstack">
+            <p class="fw-bold">Baluchar (Beside Kalyan Samity)</p>
+            <p class="fw-bold">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="fw-bold">Malda West Bengal</p>
+          </div>
+          <p class="font-monospace text-start">#Invoice id:- {{$bill}}</p>
           <table class="table">
             <thead>
               <tr>
@@ -37,7 +43,7 @@ Invoice
               @foreach ($billing_stack as $item)
               <tr>
                 @php
-              
+
                 $total=$total+$item->count*$item->price;
                 @endphp
                 <td class="font-monospace">{{$i=$i+1}}</td>
@@ -67,6 +73,13 @@ Invoice
 
 @push('style')
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap');
+
+  #in-title {
+    font-family: 'Space Mono', monospace;
+    font-weight: bolder
+  }
+
   @media print {
 
     #header,

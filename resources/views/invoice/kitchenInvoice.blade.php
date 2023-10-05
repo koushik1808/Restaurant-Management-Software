@@ -17,8 +17,14 @@ Invoice
     <div class="col text-center">
       <div class="card mx-auto" style="width: fit-content">
         <div class="card-body">
-          <p class="card-title fw-medium text-uppercase">Bihari Bhaiya</p>
-          <p class="font-monospace">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
+          <p class="font-monospace text-end fw-bold">Hotel &amp; Restaurant</p>
+          <div class="vstack">
+            <p class="fw-bold">Baluchar (Beside Kalyan Samity)</p>
+            <p class="fw-bold">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="fw-bold">Malda West Bengal</p>
+          </div>
+          <p class="font-monospace text-start">#Invoice id:- {{$table->billing_status}}</p>
           <p class="font-monospace">Table-No:{{$table->table}}</p>
           <table class="table">
             <thead>
@@ -29,18 +35,18 @@ Invoice
               </tr>
             </thead>
             <tbody>
-             
-               @php
+
+              @php
               $i=0;
               @endphp
               @foreach ($billing_stack as $item)
               <tr>
-                
+
                 <td class="font-monospace">{{$i=$i+1}}</td>
-              <td class="font-monospace">{{$item->manu}}</td>
-              <td class="font-monospace"> {{$item->count}}</td>
+                <td class="font-monospace">{{$item->manu}}</td>
+                <td class="font-monospace"> {{$item->count}}</td>
               </tr>
-              @endforeach 
+              @endforeach
             </tbody>
           </table>
           <div class="vstack align-items-start">
@@ -59,6 +65,13 @@ Invoice
 
 @push('style')
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap');
+
+  #in-title {
+    font-family: 'Space Mono', monospace;
+    font-weight: bolder
+  }
+
   @media print {
 
     #header,
