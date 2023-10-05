@@ -4,12 +4,17 @@
 
 @section('hero')
 <div class="container">
+  <form action="{{route('Admin.search_menu')}}" method="POST">
   <div class="row mb-3" style="height: 60px">
     <div class="col d-flex gap-3">
-      <input type="text" class="form-control rounded" placeholder="Search Menu">
-      <div class="btn btn-primary">Search Menu</div>
+     
+        @csrf
+        <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+      <input type="text" class="form-control rounded" name="menu_name" placeholder="Search Menu">
+      <div class="btn btn-primary"><button  class="btn btn-primary">Search Menu</button></div>
     </div>
   </div>
+ </form>
   {{-- menu started --}}
   <div class="row justify-content-center">
     <div class="fixed-bottom z-9 d-lg-none">
@@ -60,7 +65,11 @@
 
         @foreach ($catagory as $cata)
         <div id="{{ $cata->category }}">
-          <h4>{{ $cata->category }}</h4>
+          @if ($c==1)
+          <h4>{{ $cata->category }} </h4>
+          @else
+              
+          @endif
           @foreach ($menu as $menus)
           @if ($menus->category == $cata->category)
           <div class="card mb-3">

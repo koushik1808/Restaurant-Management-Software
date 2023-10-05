@@ -57,6 +57,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/Billing_print/{id}', 'Billing_print')->name('Admin.Billing_print');
         //
         Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
+        //
+        Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
        
     });
 

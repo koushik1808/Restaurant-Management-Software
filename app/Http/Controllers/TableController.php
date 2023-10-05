@@ -43,7 +43,7 @@ class TableController extends Controller
         $data2 = compact('billing_stack');
         $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
 
-        return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'));
+        return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',1);
     }
     //
     public function addMenu2(Request $request)
@@ -162,4 +162,23 @@ class TableController extends Controller
         $data2 = compact('billing_stack');
         return view('invoice.kitchenInvoice')->with($data2)->with( $data1);
     }
+
+     //
+     public function search_menu(Request $request)
+     {
+         $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->get();
+         $catagory = Manu::select('category')->distinct()->get();
+         $cataData = compact('catagory');
+         $data = compact('menu');
+ 
+         $table = Table::find($request->tableno);
+         $ab = $table->billing_status;
+         $data1 = compact('table');
+ 
+         $billing_stack = BillingSkack::where("billing_no", '=', $ab)->get();
+         $data2 = compact('billing_stack');
+         $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
+ 
+         return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',0);
+     }
 }
