@@ -54,10 +54,10 @@ class AdminController extends Controller
     public function Changed_Password(Request $request){
         
        
-        $user = Admin::all();
-            if (Hash::check($request->oldPassword,$user[0]->password)) {
-                $user[0]->password=hash::make($request['newpassword']);
-                $user[0]->save();
+        $user = Admin::where("name", '=', Session::get('LoginName'))->first();
+            if (Hash::check($request->oldPassword,$user->password)) {
+                $user->password=hash::make($request['newpassword']);
+                $user->save();
                 return redirect()->route('Admin.Dashbroad');
             } else {
                 return back()->with('fall_password', 'This password is wrong');

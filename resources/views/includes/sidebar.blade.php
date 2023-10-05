@@ -1,7 +1,7 @@
 <div class="offcanvas offcanvas-start sidebar-nav text-dark" data-bs-scroll="true" data-bs-backdrop="false"
   data-bs-theme="dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h3 class="m-0">Admin</h3>
+    <h3 class="m-0">{{Session::get('LoginName')}}</h3>
     <button type="button" class="btn btn-danger btn ms-auto d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
       <i class='bx bxs-x-circle'></i>
     </button>
@@ -103,12 +103,17 @@
           Profile
         </a>
       </li>
+      @if (Session::get('LoginName') =='Administrator')
+          
+      @else
       <li>
         <a href="{{route('Admin.Change_Password')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
           Change Password
         </a>
       </li>
+      @endif
+      
       <li>
         <a href="{{route('Admin.Logout')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
