@@ -10,7 +10,7 @@ Invoice
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success" id="home-btn">Home</a>
+      <a href="{{route('Admin.Billing2',['id'=>$table->table])}}" class="btn btn-success" id="home-btn">Home</a>
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,12 @@ Invoice
             <p class="fw-bold">Malda West Bengal</p>
           </div>
           <p class="font-monospace text-start">#Invoice id:- {{$table->billing_status}}</p>
+          @if ($table->table)
           <p class="font-monospace">Table-No:{{$table->table}}</p>
+          @else
+              
+          @endif
+         
           <table class="table">
             <thead>
               <tr>

@@ -56,6 +56,12 @@
 
         </ul>
       </li>
+      <li>
+        <a href="{{route('Admin.Billing2',['id'=>0])}}" class="btn border-0">
+          <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+          Billing
+        </a>
+      </li>
       {{-- <li>
         <a href="#" class="btn" data-bs-target="#te-collapse" aria-controls="#te-collapse" data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-alipay"></i></span>

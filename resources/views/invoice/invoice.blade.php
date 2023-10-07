@@ -57,7 +57,8 @@ Invoice
           </table>
           <div class="vstack align-items-start">
             <p>Total Amount:{{$total}}</p>
-            <p>NetPayble:{{$total}}</p>
+            <p>GST  18% :{{$total*0.18}}</p>
+            <p>NetPayble:{{$total+$total*0.18}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Thank You Visit Again</p>
           </div>
