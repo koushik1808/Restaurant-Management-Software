@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     //
-    public function addNewMenu(){
-        $category=category::all();
+    public function addNewMenu()
+    {
+        $category = category::all();
         $data = compact('category');
         return view('menus.addMenu')->with($data);
     }
@@ -24,6 +25,15 @@ class MenuController extends Controller
         $data = compact('menu');
         return view('menus.menu', )->with($data)->with($cataData);
     }
+    public function public_menu()
+    {
+        $menu = Manu::all();
+        $catagory = Manu::select('category')->distinct()->get();
+        $cataData = compact('catagory');
+        $data = compact('menu');
+        return view('publicMenu.menus', )->with($data)->with($cataData);
+    }
+
     public function view_public_menu()
     {
         $menu = Manu::all();
@@ -32,16 +42,17 @@ class MenuController extends Controller
         $data = compact('menu');
         return view('publicMenu.publicView', )->with($data)->with($cataData);
     }
-     //
-     public function added_menu(Request $request){
-        $category=category::where("category", '=', $request->input('menu_category'))->first();
-        $menu=new Manu();
-        $menu->Manu_code=$request['menu_code'];
-        $menu->Manu_name=$request['menu_name'];
-        $menu->category=$request['menu_category'];
-        $menu->category_id= $category->id;
-        $menu->Manu_dis=$request['menu_price'];
-        $menu->Manu_price=$request['menu_dis'];
+    //
+    public function added_menu(Request $request)
+    {
+        $category = category::where("category", '=', $request->input('menu_category'))->first();
+        $menu = new Manu();
+        $menu->Manu_code = $request['menu_code'];
+        $menu->Manu_name = $request['menu_name'];
+        $menu->category = $request['menu_category'];
+        $menu->category_id = $category->id;
+        $menu->Manu_dis = $request['menu_price'];
+        $menu->Manu_price = $request['menu_dis'];
         $menu->save();
         return redirect()->route('Admin.Dashbroad');
     }

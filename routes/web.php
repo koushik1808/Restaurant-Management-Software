@@ -59,7 +59,7 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
         //
         Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
-       
+
     });
 
     Route::controller(categoryController::class)->group(function () {
@@ -72,13 +72,14 @@ Route::middleware('isLogin')->group(function () {
     });
 
     Route::controller(MenuController::class)->group(function () {
-         //
-         Route::get('/addNewMenu', 'addNewMenu')->name('Admin.addNewMenu');
+        //
+        Route::get('/addNewMenu', 'addNewMenu')->name('Admin.addNewMenu');
         //
         Route::get('/add_menu', 'add_menu')->name('Admin.add_menu');
         // route for public menu
-        Route::get('/public_menu', 'view_public_menu')->name('Admin.public_menu');
+        Route::get('/public_menu', 'public_menu')->name('Admin.public_menu');
         //
         Route::post('/added_menu', 'added_menu')->name('Admin.added_menu');
     });
 });
+Route::get('/menus', [MenuController::class, 'view_public_menu']);

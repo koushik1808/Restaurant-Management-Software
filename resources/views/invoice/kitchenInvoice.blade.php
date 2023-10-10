@@ -20,9 +20,9 @@ Invoice
           <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
           <p class="font-monospace text-end fw-bold">Hotel &amp; Restaurant</p>
           <div class="vstack">
-            <p class="fw-bold">Baluchar (Beside Kalyan Samity)</p>
-            <p class="fw-bold">Satya Choudhury Indoor Stadium Building,</p>
-            <p class="fw-bold">Malda West Bengal</p>
+            <p class="fw-bold m-0">Baluchar (Beside Kalyan Samity)</p>
+            <p class="fw-bold m-0">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="fw-bold m-0">Malda West Bengal</p>
           </div>
           <p class="font-monospace text-start">#Invoice id:- {{$table->billing_status}}</p>
           @if ($table->table)
