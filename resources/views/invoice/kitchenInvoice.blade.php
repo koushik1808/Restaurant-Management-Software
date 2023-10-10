@@ -15,28 +15,28 @@ Invoice
   </div>
   <div class="row">
     <div class="col text-center">
-      <div class="card mx-auto" style="width: fit-content">
-        <div class="card-body">
+      <div class="card mx-auto" style="width:fit-content">
+        <div class="card-body p-0 ps-1">
           <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
-          <p class="font-monospace text-end fw-bold">Hotel &amp; Restaurant</p>
+          <p class="">Hotel &amp; Restaurant</p>
           <div class="vstack">
-            <p class="fw-bold m-0">Baluchar (Beside Kalyan Samity)</p>
-            <p class="fw-bold m-0">Satya Choudhury Indoor Stadium Building,</p>
-            <p class="fw-bold m-0">Malda West Bengal</p>
+            <p class="m-0">Baluchar (Beside Kalyan Samity)</p>
+            <p class="m-0">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="">Malda West Bengal</p>
           </div>
-          <p class="font-monospace text-start">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="text-start">#Invoice id:- {{$table->billing_status}}</p>
           @if ($table->table)
-          <p class="font-monospace">Table-No:{{$table->table}}</p>
+          <p class="">Table-No:{{$table->table}}</p>
           @else
-              
+
           @endif
-         
+
           <table class="table">
             <thead>
               <tr>
-                <td class="font-monospace">SL.No</td>
-                <td class="font-monospace">MenuItem</td>
-                <td class="font-monospace">Quantity</td>
+                <td class="">SL.No</td>
+                <td class="">MenuItem</td>
+                <td class="">Quantity</td>
               </tr>
             </thead>
             <tbody>
@@ -47,20 +47,21 @@ Invoice
               @foreach ($billing_stack as $item)
               <tr>
 
-                <td class="font-monospace">{{$i=$i+1}}</td>
-                <td class="font-monospace">{{$item->manu}}</td>
-                <td class="font-monospace"> {{$item->count}}</td>
+                <td class="">{{$i=$i+1}}</td>
+                <td class="">{{$item->manu}}</td>
+                <td class=""> {{$item->count}}</td>
               </tr>
               @endforeach
             </tbody>
           </table>
           <div class="vstack align-items-start">
             <hr class="w-100 border-2" />
-            <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Powered By RestroRover</p>
+            <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Powered By <span>RestroRover</span>
+            </p>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn">Print Bill</button>
+      <button class="btn btn-primary my-4" id="print-btn">Print Order</button>
 
     </div>
   </div>
@@ -70,10 +71,8 @@ Invoice
 
 @push('style')
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap');
-
   #in-title {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bolder
   }
 
@@ -91,7 +90,11 @@ Invoice
     }
 
     .card {
+      width: 80mm;
       border: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
   }
 </style>

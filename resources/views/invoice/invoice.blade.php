@@ -15,24 +15,24 @@ Invoice
   </div>
   <div class="row">
     <div class="col text-center">
-      <div class="card mx-auto" style="width: fit-content">
-        <div class="card-body">
-          <p class="card-title fw-medium text-uppercase" id="in-title">Bihari Bhaiya</p>
-          <p class="font-monospace text-end fw-bold">Hotel &amp; Restaurant</p>
+      <div class="card mx-auto " style="width:fit-content">
+        <div class="card-body p-0 ps-1">
+          <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
+          <p>Hotel &amp; Restaurant</p>
           <div class="vstack">
-            <p class="fw-bold m-0">Baluchar (Beside Kalyan Samity)</p>
-            <p class="fw-bold m-0">Satya Choudhury Indoor Stadium Building,</p>
-            <p class="fw-bold m-0">Malda West Bengal</p>
+            <p class="m-0">Baluchar (Beside Kalyan Samity)</p>
+            <p class="m-0">Satya Choudhury Indoor Stadium Building,</p>
+            <p>Malda West Bengal</p>
           </div>
-          <p class="font-monospace text-start">#Invoice id:- {{$bill}}</p>
+          <p class="text-start">#Invoice id:- {{$bill}}</p>
           <table class="table">
             <thead>
               <tr>
-                <td class="font-monospace">SL.No</td>
-                <td class="font-monospace">MenuItem</td>
-                <td class="font-monospace">Price</td>
-                <td class="font-monospace">Quantity</td>
-                <td class="font-monospace">Amount</td>
+                {{-- <td>SL.No</td> --}}
+                <td>MenuItem</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Amount</td>
               </tr>
             </thead>
             <tbody>
@@ -46,11 +46,11 @@ Invoice
 
                 $total=$total+$item->count*$item->price;
                 @endphp
-                <td class="font-monospace">{{$i=$i+1}}</td>
-                <td class="font-monospace">{{$item->manu}}</td>
-                <td class="font-monospace">{{$item->price}}</td>
-                <td class="font-monospace"> {{$item->count}}</td>
-                <td class="font-monospace"> {{$item->count*$item->price}}</td>
+                {{-- <td class="font-monospace">{{$i=$i+1}}</td> --}}
+                <td>{{$item->manu}}</td>
+                <td>{{$item->price}}</td>
+                <td> {{$item->count}}</td>
+                <td> {{$item->count*$item->price}}</td>
               </tr>
               @endforeach
             </tbody>
@@ -59,13 +59,13 @@ Invoice
             <p class="m-0">Total Amount:{{$total}}</p>
             <p class="mb-1"> + GST 18 &percnt;</p>
             <p class="mb-2">Festival Discount 10&percnt;</p>
-            <p class="fw-bold">Net Amount Payable:{{$total}}</p>
+            <p class="fw-medium">Net Amount Payable:{{$total}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Thank You Visit Again</p>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn">Print Bill</button>
+      <button class="btn btn-primary my-4" id="print-btn">KOT Print</button>
 
     </div>
   </div>
@@ -75,10 +75,8 @@ Invoice
 
 @push('style')
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@1,700&display=swap');
-
   #in-title {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bolder
   }
 
@@ -96,7 +94,11 @@ Invoice
     }
 
     .card {
+      width: 80mm;
       border: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
   }
 </style>
