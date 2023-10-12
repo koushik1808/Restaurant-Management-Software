@@ -69,7 +69,7 @@ Invoice
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn">KOT Print</button>
+      <button class="btn btn-primary my-4" id="print-btn"> Print</button>
 
     </div>
   </div>

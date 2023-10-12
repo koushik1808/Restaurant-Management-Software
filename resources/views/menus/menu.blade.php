@@ -157,10 +157,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">Save &amp; Print<i
+          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">KOT &amp; Print<i
               class='bx bxs-printer'></i></a>
           <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">KOT &amp; Print <i
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Save &amp; Print <i
               class='bx bxs-printer'></i>
           </a>
         </div>

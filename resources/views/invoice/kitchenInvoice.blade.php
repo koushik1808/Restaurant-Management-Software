@@ -49,7 +49,7 @@ Invoice
 
                 <td class="">{{$i=$i+1}}</td>
                 <td class="">{{$item->manu}}</td>
-                <td class=""> {{$item->count}}</td>
+                <td class=""> {{$item->kot}}</td>
               </tr>
               @endforeach
             </tbody>

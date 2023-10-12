@@ -126,6 +126,12 @@ class TableController extends Controller
     {
         $billing_stack = BillingSkack::find($id);
         $billing_stack->count = $billing_stack->count + 1;
+        if($billing_stack->status){
+            $billing_stack->status ='0';
+            $billing_stack->kot = 1;
+        }else{
+            $billing_stack->kot =$billing_stack->kot + 1;
+        }
         $billing_stack->save();
         return back();
     }
@@ -136,6 +142,7 @@ class TableController extends Controller
         if ($billing_stack->count <= 1) {
             $billing_stack->delete();
         } else {
+            $billing_stack->kot =$billing_stack->kot + -1;
             $billing_stack->count = $billing_stack->count - 1;
             $billing_stack->save();
         }
