@@ -69,6 +69,7 @@ class TableController extends Controller
             return back()->with('fall_code', 'This Menu code is wrong');
         }
     }
+    //
     public function Billing_print($id)
     {
         $table = Table::find($id);
@@ -81,6 +82,7 @@ class TableController extends Controller
         $table->save();
         return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3);
     }
+    //
     public function addMenu(Request $request)
     {
 
@@ -103,6 +105,7 @@ class TableController extends Controller
             return back()->with('fall_code', 'This Menu code is wrong');
         }
     }
+    //
     public function delete_menu($id)
     {
         $user = BillingSkack::find($id);
@@ -122,6 +125,7 @@ class TableController extends Controller
         }
         return back();
     }
+    //
     public function count_add($id)
     {
         $billing_stack = BillingSkack::find($id);
@@ -135,6 +139,7 @@ class TableController extends Controller
         $billing_stack->save();
         return back();
     }
+    //
     public function count_sub($id)
     {
         $billing_stack = BillingSkack::find($id);
@@ -170,10 +175,8 @@ class TableController extends Controller
         $data2 = compact('billing_stack');
         return view('invoice.kitchenInvoice')->with($data2)->with( $data1);
     }
-
-     //
-     public function search_menu(Request $request)
-     {
+    //
+    public function search_menu(Request $request){
          $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->get();
          $catagory = Manu::select('category')->distinct()->get();
          $cataData = compact('catagory');
@@ -188,5 +191,5 @@ class TableController extends Controller
          $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
  
          return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',0);
-     }
+    }
 }
