@@ -73,12 +73,13 @@ class TableController extends Controller
     {
         $table = Table::find($id);
         $data1 = $table->billing_status;
+        $data3 = compact('table');
         $billing_stack = BillingSkack::where("billing_no", '=', $table->billing_status)->get();
         $data2 = compact('billing_stack');
         $table->status = '0';
         $table->billing_status = '0';
         $table->save();
-        return view('invoice.invoice')->with($data2)->with('bill', $data1);
+        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3);
     }
     public function addMenu(Request $request)
     {

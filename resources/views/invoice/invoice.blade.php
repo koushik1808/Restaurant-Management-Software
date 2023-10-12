@@ -25,6 +25,11 @@ Invoice
             <p>Malda West Bengal</p>
           </div>
           <p class="text-start">#Invoice id:- {{$bill}}</p>
+          @if ($table->table)
+          <p class="">Table-No:{{$table->table}}</p>
+          @else
+
+          @endif
           <table class="table">
             <thead>
               <tr>
@@ -57,9 +62,8 @@ Invoice
           </table>
           <div class="vstack align-items-start">
             <p class="m-0">Total Amount:{{$total}}</p>
-            <p class="mb-1"> + GST 18 &percnt;</p>
             <p class="mb-2">Festival Discount 10&percnt;</p>
-            <p class="fw-medium">Net Amount Payable:{{$total}}</p>
+            <p class="fw-medium">Net Amount Payable:{{$total-$total*0.1}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Thank You Visit Again</p>
           </div>
