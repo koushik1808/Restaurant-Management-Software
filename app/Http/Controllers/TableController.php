@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
 use App\Models\BillingSkack;
 use App\Models\Manu;
 use App\Models\Table;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class TableController extends Controller
 {
@@ -75,8 +78,18 @@ class TableController extends Controller
         $table = Table::find($id);
         $data1 = $table->billing_status;
         $data3 = compact('table');
+        $count=BillingSkack::where("billing_no", '=',$table->billing_status)->get()->count();
         $billing_stack = BillingSkack::where("billing_no", '=', $table->billing_status)->get();
+        $total=0;
+        foreach($billing_stack as $billing_stack1){
+            $total= $total+$billing_stack1->price*$billing_stack1->count ;
+        }
         $data2 = compact('billing_stack');
+        $billing=new Billing();
+        $billing->bill_no=$table->billing_status;
+        $billing->total_manu=$count;
+        $billing->total=$total;
+        $billing->save();
         $table->status = '0';
         $table->billing_status = '0';
         $table->save();
@@ -191,5 +204,12 @@ class TableController extends Controller
          $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
  
          return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',0);
+    }
+    //
+    public function todeyreport(){
+        $date=new DateTime();
+        $billing=Billing::where("created_at", 'like','%'.$date->format('y-m-d').'%')->get();
+        $data=compact('billing');
+        return view('invoice.report')->with($data);
     }
 }

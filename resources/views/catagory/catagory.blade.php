@@ -25,19 +25,21 @@ Catagory
         <tr>
           <td>SL.No</td>
           <td>Catagory Name</td>
-          <td>Menu Items</td>
           <td>Actions</td>
         </tr>
       </thead>
 
       <tbody>
+        @php
+        $i=0;
+        $total=0;
+        @endphp
         @foreach ($category as $cata)
         <tr>
-          <td>{{$cata->id}}</td>
+          <td>{{$i=$i+1}}</td>
           <td>{{$cata->category}}</td>
-          <td>{{$cata->category}} </td>
           <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-            <a href="#" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+            <a href="{{route('Admin.delete_category',['id'=>$cata->id])}}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
           </td>
         </tr>
         @endforeach

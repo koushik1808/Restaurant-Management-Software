@@ -16,28 +16,28 @@ Invoice
   <div class="row">
     <div class="col text-center">
       <div class="card mx-auto " style="width:fit-content">
-        <div class="card-body p-0 ps-1">
-          <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
-          <p>Hotel &amp; Restaurant</p>
+        <div class="card-body p-0 text-start">
+          <p class="card-title text-uppercase fw-bold fs-4" id="in-title">Bihari Bhaiya</p>
+          <p class="fw-bold">Hotel &amp; Restaurant</p>
           <div class="vstack">
-            <p class="m-0">Baluchar (Beside Kalyan Samity)</p>
-            <p class="m-0">Satya Choudhury Indoor Stadium Building,</p>
-            <p>Malda West Bengal</p>
+            <p class="m-0 fw-bold">Baluchar (Beside Kalyan Samity)</p>
+            <p class="m-0 fw-bold">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="fw-bold">Malda West Bengal</p>
           </div>
-          <p class="text-start">#Invoice id:- {{$bill}}</p>
+          <p class="text-start fw-bold">#Invoice id:- {{$bill}}</p>
           @if ($table->table)
-          <p class="">Table-No:{{$table->table}}</p>
+          <p class="fw-bold">Table-No:{{$table->table}}</p>
           @else
 
           @endif
-          <table class="table">
+          <table class="table p-0">
             <thead>
-              <tr>
+              <tr class="p-0">
                 {{-- <td>SL.No</td> --}}
-                <td>MenuItem</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>Amount</td>
+                <td class="fw-bold">MenuItem</td>
+                <td class="fw-bold">Price</td>
+                <td class="fw-bold">Quantity</td>
+                <td class="fw-bold">Amount</td>
               </tr>
             </thead>
             <tbody>
@@ -52,24 +52,24 @@ Invoice
                 $total=$total+$item->count*$item->price;
                 @endphp
                 {{-- <td class="font-monospace">{{$i=$i+1}}</td> --}}
-                <td>{{$item->manu}}</td>
-                <td>{{$item->price}}</td>
-                <td> {{$item->count}}</td>
-                <td> {{$item->count*$item->price}}</td>
+                <td class="fw-bold">{!! Str::limit($item->manu, 7, '...') !!}</td>
+                <td class="fw-bold">{{$item->price}}</td>
+                <td class="fw-bold"> {{$item->count}}</td>
+                <td class="fw-bold"> {{$item->count*$item->price}}</td>
               </tr>
               @endforeach
             </tbody>
           </table>
           <div class="vstack align-items-start">
-            <p class="m-0">Total Amount:{{$total}}</p>
-            <p class="mb-2">Festival Discount 10&percnt;</p>
-            <p class="fw-medium">Net Amount Payable:{{$total-$total*0.1}}</p>
+            <p class="m-0 fw-bold">Total Amount:{{$total}}</p>
+            <p class="mb-2 fw-bold">Festival Discount 10&percnt;</p>
+            <p class="fw-bold">Net Amount Payable:{{$total-$total*0.1}}</p>
             <hr class="w-100 border-2" />
-            <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Thank You Visit Again</p>
+            <p class="fs-3 d-none  fw-bold " id="message">Thank You Visit Again</p>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn"> Print</button>
+      <button class="btn btn-primary my-4" id="print-btn"> Print Bill</button>
 
     </div>
   </div>
@@ -79,9 +79,10 @@ Invoice
 
 @push('style')
 <style>
-  #in-title {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bolder
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap');
+
+  body {
+    font-family: 'Roboto', sans-serif;
   }
 
   @media print {
@@ -98,12 +99,20 @@ Invoice
     }
 
     .card {
-      width: 80mm;
+      width: 80mm !important;
       border: 0;
       position: fixed;
       top: 0;
       left: 0;
+      overflow: hidden;
     }
+
+    tr,
+    td {
+      padding: 0 !important;
+      padding-right: 5px !important;
+    }
+
   }
 </style>
 

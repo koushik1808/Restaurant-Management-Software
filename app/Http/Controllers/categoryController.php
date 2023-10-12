@@ -29,5 +29,11 @@ class categoryController extends Controller
         $category->save();
         return redirect()->route('Admin.Dashbroad');
     }
-   
+    public function delete_category($id)
+    {
+        $category = category::find($id);
+        $category->delete();
+       
+        return back();
+    }
 }

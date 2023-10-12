@@ -59,6 +59,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
         //
         Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
+        //
+        Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
 
     });
 
@@ -69,6 +71,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/add_category', 'add_category')->name('Admin.add_category');
         //
         Route::post('/added_category', 'added_category')->name('Admin.added_category');
+         //
+         Route::get('/delete_category/{id}', 'delete_category')->name('Admin.delete_category');
     });
 
     Route::controller(MenuController::class)->group(function () {

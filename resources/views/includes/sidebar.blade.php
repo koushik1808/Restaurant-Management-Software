@@ -62,6 +62,13 @@
           Billing
         </a>
       </li>
+    </li>
+    <li>
+      <a href="{{route('Admin.todeyreport')}}" class="btn border-0">
+        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+       Today Report
+      </a>
+    </li>
       {{-- <li>
         <a href="#" class="btn" data-bs-target="#te-collapse" aria-controls="#te-collapse" data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-alipay"></i></span>

@@ -47,12 +47,12 @@ class MenuController extends Controller
     {
         $category = category::where("category", '=', $request->input('menu_category'))->first();
         $menu = new Manu();
-        $menu->Manu_code = $request['menu_code'];
+        $menu->Manu_code = 0;
         $menu->Manu_name = $request['menu_name'];
         $menu->category = $request['menu_category'];
         $menu->category_id = $category->id;
-        $menu->Manu_dis = $request['menu_price'];
-        $menu->Manu_price = $request['menu_dis'];
+        $menu->Manu_dis = $request['menu_dis'];
+        $menu->Manu_price =  $request['menu_price'];
         $menu->save();
         return redirect()->route('Admin.Dashbroad');
     }
