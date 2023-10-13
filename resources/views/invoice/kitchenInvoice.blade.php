@@ -16,7 +16,7 @@ Invoice
   <div class="row">
     <div class="col text-center">
       <div class="card mx-auto" style="width:fit-content">
-        <div class="card-body p-0 ps-1">
+        <div class="card-body p-0 text-start">
           <p class="card-title text-uppercase fs-4 fw-bold" id="in-title">Bihari Bhaiya</p>
           <p class="fw-bold">Hotel &amp; Restaurant</p>
           <div class="vstack">
@@ -24,7 +24,7 @@ Invoice
             <p class="m-0 fw-bold">Satya Choudhury Indoor Stadium Building,</p>
             <p class="fw-bold">Malda West Bengal</p>
           </div>
-          <p class="text-start fw-bold">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="fw-bold">#Invoice id:- {{$table->billing_status}}</p>
           @if ($table->table)
           <p class="fw-bold">Table-No:{{$table->table}}</p>
           @else
@@ -56,7 +56,7 @@ Invoice
           </table>
           <div class="vstack align-items-start">
             <hr class="w-100 border-2" />
-            <p class="fs-2 d-none  w-100 text-center fw-bold " id="message">Powered By <span>RestroRover</span>
+            <p class="fs-3 d-none  w-100  fw-bold " id="message">Powered By <span>RestroRover</span>
             </p>
           </div>
         </div>
@@ -91,11 +91,18 @@ Invoice
     }
 
     .card {
-      width: 80mm;
+      width: 80mm !important;
       border: 0;
       position: fixed;
       top: 0;
       left: 0;
+      overflow: hidden;
+    }
+
+    tr,
+    td {
+      padding: 0 !important;
+      padding-right: 5px !important;
     }
   }
 </style>

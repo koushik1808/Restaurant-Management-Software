@@ -52,7 +52,7 @@ Invoice
                 $total=$total+$item->count*$item->price;
                 @endphp
                 {{-- <td class="font-monospace">{{$i=$i+1}}</td> --}}
-                <td class="fw-bold">{{$item->manu}}</td>
+                <td class="fw-bold fs-6">{{$item->manu}}</td>
                 <td class="fw-bold">{{$item->price}}</td>
                 <td class="fw-bold"> {{$item->count}}</td>
                 <td class="fw-bold"> {{$item->count*$item->price}}</td>
@@ -65,7 +65,7 @@ Invoice
             <p class="mb-2 fw-bold">Festival Discount 10&percnt;</p>
             <p class="fw-bold">Net Amount Payable:{{$total-$total*0.1}}</p>
             <hr class="w-100 border-2" />
-            <p class="fs-3 d-none  fw-bold " id="message">Thank You Visit Again</p>
+            <p class="fs-3 d-none  fw-bold " id="message">Thank You...<span>Visit Again</span> </p>
           </div>
         </div>
       </div>
