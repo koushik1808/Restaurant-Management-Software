@@ -17,16 +17,16 @@ Invoice
     <div class="col text-center">
       <div class="card mx-auto" style="width:fit-content">
         <div class="card-body p-0 ps-1">
-          <p class="card-title text-uppercase" id="in-title">Bihari Bhaiya</p>
-          <p class="">Hotel &amp; Restaurant</p>
+          <p class="card-title text-uppercase fs-4 fw-bold" id="in-title">Bihari Bhaiya</p>
+          <p class="fw-bold">Hotel &amp; Restaurant</p>
           <div class="vstack">
-            <p class="m-0">Baluchar (Beside Kalyan Samity)</p>
-            <p class="m-0">Satya Choudhury Indoor Stadium Building,</p>
-            <p class="">Malda West Bengal</p>
+            <p class="m-0 fw-bold">Baluchar (Beside Kalyan Samity)</p>
+            <p class="m-0 fw-bold">Satya Choudhury Indoor Stadium Building,</p>
+            <p class="fw-bold">Malda West Bengal</p>
           </div>
-          <p class="text-start">#Invoice id:- {{$table->billing_status}}</p>
+          <p class="text-start fw-bold">#Invoice id:- {{$table->billing_status}}</p>
           @if ($table->table)
-          <p class="">Table-No:{{$table->table}}</p>
+          <p class="fw-bold">Table-No:{{$table->table}}</p>
           @else
 
           @endif
@@ -34,9 +34,9 @@ Invoice
           <table class="table">
             <thead>
               <tr>
-                <td class="">SL.No</td>
-                <td class="">MenuItem</td>
-                <td class="">Quantity</td>
+                <td class="fw-bold">SL.No</td>
+                <td class="fw-bold">MenuItem</td>
+                <td class="fw-bold">Quantity</td>
               </tr>
             </thead>
             <tbody>
@@ -47,16 +47,16 @@ Invoice
               @foreach ($billing_stack as $item)
               <tr>
 
-                <td class="">{{$i=$i+1}}</td>
-                <td class="">{{$item->manu}}</td>
-                <td class=""> {{$item->kot}}</td>
+                <td class="fw-bold">{{$i=$i+1}}</td>
+                <td class="fw-bold">{{$item->manu}}</td>
+                <td class="fw-bold"> {{$item->kot}}</td>
               </tr>
               @endforeach
             </tbody>
           </table>
           <div class="vstack align-items-start">
             <hr class="w-100 border-2" />
-            <p class="fs-2 d-none  w-100 text-center font-monospace " id="message">Powered By <span>RestroRover</span>
+            <p class="fs-2 d-none  w-100 text-center fw-bold " id="message">Powered By <span>RestroRover</span>
             </p>
           </div>
         </div>
@@ -71,9 +71,10 @@ Invoice
 
 @push('style')
 <style>
-  #in-title {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bolder
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap');
+
+  body {
+    font-family: 'Roboto', sans-serif;
   }
 
   @media print {

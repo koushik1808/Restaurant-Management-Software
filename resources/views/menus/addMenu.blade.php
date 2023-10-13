@@ -22,7 +22,7 @@ Add Catagory
           @csrf
           <div class="mb-3">
             <label for="" class="form-label">Menu Name </label>
-            <input type="text" name="menu_name" class="form-control">
+            <input type="text" name="menu_name" @required(true) class="form-control">
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Menu Catagory </label>
@@ -35,7 +35,7 @@ Add Catagory
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Menu Price </label>
-            <input type="text" name="menu_price" class="form-control">
+            <input type="text" name="menu_price" @required(true) class="form-control">
           </div>
 
           <div class="mb-3">

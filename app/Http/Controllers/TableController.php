@@ -98,7 +98,6 @@ class TableController extends Controller
     //
     public function addMenu(Request $request)
     {
-
         $table = Table::find($request->tableno);
         if ($table->billing_status == 0) {
             $table->status = '1';
@@ -190,20 +189,17 @@ class TableController extends Controller
     }
     //
     public function search_menu(Request $request){
-         $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->get();
-         $catagory = Manu::select('category')->distinct()->get();
-         $cataData = compact('catagory');
-         $data = compact('menu');
- 
-         $table = Table::find($request->tableno);
-         $ab = $table->billing_status;
-         $data1 = compact('table');
- 
-         $billing_stack = BillingSkack::where("billing_no", '=', $ab)->get();
-         $data2 = compact('billing_stack');
-         $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
- 
-         return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',0);
+            $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->get();
+            $catagory = Manu::select('category')->distinct()->get();
+            $cataData = compact('catagory');
+            $data = compact('menu');
+            $table = Table::find($request->tableno);
+            $ab = $table->billing_status;
+            $data1 = compact('table');
+            $billing_stack = BillingSkack::where("billing_no", '=', $ab)->get();
+            $data2 = compact('billing_stack');
+            $stackCount = BillingSkack::where("billing_no", '=', $ab)->get()->count();
+            return view('menus.menu')->with($data1)->with($data2)->with($data)->with($cataData)->with(compact('stackCount'))->with('c',0);
     }
     //
     public function todeyreport(){

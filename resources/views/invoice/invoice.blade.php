@@ -52,7 +52,7 @@ Invoice
                 $total=$total+$item->count*$item->price;
                 @endphp
                 {{-- <td class="font-monospace">{{$i=$i+1}}</td> --}}
-                <td class="fw-bold">{!! Str::limit($item->manu, 7, '...') !!}</td>
+                <td class="fw-bold">{{$item->manu}}</td>
                 <td class="fw-bold">{{$item->price}}</td>
                 <td class="fw-bold"> {{$item->count}}</td>
                 <td class="fw-bold"> {{$item->count*$item->price}}</td>
