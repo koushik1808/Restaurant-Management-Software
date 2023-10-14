@@ -208,4 +208,10 @@ class TableController extends Controller
         $data=compact('billing');
         return view('invoice.report')->with($data);
     }
+    //
+    public function MenuRepoet($id){
+        $billing_stack = BillingSkack::where("billing_no", '=',$id)->get();
+        $data=compact('billing_stack');
+        return view('invoice.menuReport')->with($data);
+    }
 }

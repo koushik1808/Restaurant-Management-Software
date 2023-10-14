@@ -61,7 +61,8 @@ Route::middleware('isLogin')->group(function () {
         Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
         //
         Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
-
+         //
+         Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');
     });
 
     Route::controller(categoryController::class)->group(function () {
