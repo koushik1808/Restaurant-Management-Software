@@ -46,10 +46,17 @@
             $total_sale=$total_sale+$item->total-$item->total*0.1;
             @endphp
             <td>{{$i=$i+1}}</td>
+<<<<<<< HEAD
             <td><a href="{{route('Admin.MenuRepoet',['id'=>$item->bill_no])}}">{{$item->bill_no}}</a></td>
             <td>{{$item->total_manu}}</td>
             <td>{{$item->total}}</td>
             <td>{{round($item->total-$item->total*0.1)}}</td>
+=======
+            <td>{{$item->bill_no}}</td>
+            <td>{{$item->total_manu}}</td>
+            <td>{{$item->total}}</td>
+            <td>{{$item->total-$item->total*0.1}}</td>
+>>>>>>> 98b5735b54051c5c35fbe912c06d4a2a51c9ff0e
             <td>{{$item->created_at}}</td>
           </tr>
           @endforeach
