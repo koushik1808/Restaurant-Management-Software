@@ -5,13 +5,38 @@
 @section('hero')
 <div class="container">
   <form action="{{route('Admin.search_menu')}}" method="POST">
-    <div class="row mb-3" style="height: 60px">
+    <div class="row my-3">
+      <div class="col">
+        <label for="" class="form-label">
+          Client Name
+          <input type="text" class="form-control">
+        </label>
+
+      </div>
+      <div class="col">
+        <label for="" class="form-label">
+          Client Phone
+          <input type="text" class="form-control">
+        </label>
+
+      </div>
+      <div class="col">
+        <label for="" class="form-label">
+          Client Address
+          <input type="text" class="form-control">
+        </label>
+
+      </div>
+    </div>
+    <div class="row my-3" style="height: 60px">
       <div class="col d-flex gap-3">
+
 
         @csrf
         <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
         <input type="text" class="form-control rounded" name="menu_name" placeholder="Search Menu">
-        <div class="btn btn-primary"><button class="btn btn-primary">Search Menu</button></div>
+        <div class="btn btn-primary"><button class="btn btn-primary">Search</button></div>
+
       </div>
     </div>
   </form>
