@@ -56,13 +56,23 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::get('/Billing_print/{id}', 'Billing_print')->name('Admin.Billing_print');
         //
+        Route::get('/Billing_print2/{id}', 'Billing_print2')->name('Admin.Billing_print2');
+        //
+        Route::get('/cancelBilling/{id}', 'cancelBilling')->name('Admin.cancelBilling');
+        //
         Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
         //
         Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
         //
         Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
          //
+         Route::get('/monthreport', 'monthreport')->name('Admin.monthreport');
+          //
+        Route::get('/customreport', 'customreport')->name('Admin.customreport');
+        //
          Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');
+        //
+        Route::post('/Add_Client','Add_Client')->name('Admin.Add_Client');
     });
 
     Route::controller(categoryController::class)->group(function () {

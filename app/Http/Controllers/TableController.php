@@ -6,6 +6,7 @@ use App\Models\Billing;
 use App\Models\BillingSkack;
 use App\Models\Manu;
 use App\Models\Table;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -75,6 +76,24 @@ class TableController extends Controller
     //
     public function Billing_print($id)
     {
+        $date=new DateTime();
+        $table = Table::find($id);
+        $data1 = $table->billing_status;
+        $data3 = compact('table');
+        $count=BillingSkack::where("billing_no", '=',$table->billing_status)->get()->count();
+        $billing_stack = BillingSkack::where("billing_no", '=', $table->billing_status)->get();
+        $total=0;
+        foreach($billing_stack as $billing_stack1){
+            $total= $total+$billing_stack1->price*$billing_stack1->count ;
+        }
+        $data2 = compact('billing_stack');
+       
+        return view('invoice.invoice2')->with($data2)->with('bill', $data1)->with($data3)->with('date', $date->format('y-m-d'));
+    }
+    //
+    public function Billing_print2($id)
+    {
+        $date=new DateTime();
         $table = Table::find($id);
         $data1 = $table->billing_status;
         $data3 = compact('table');
@@ -89,11 +108,32 @@ class TableController extends Controller
         $billing->bill_no=$table->billing_status;
         $billing->total_manu=$count;
         $billing->total=$total;
+        $billing->name=$table->name;
+        $billing->number=$table->number;
+        $billing->ad=$table->ad;
         $billing->save();
+        $billing = Billing::where("bill_no", '=', $table->billing_status)->first();
         $table->status = '0';
         $table->billing_status = '0';
+        $table->name = '0';
+        $table->number = '0';
+        $table->ad = '0';
         $table->save();
-        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3);
+        
+        $data4 = compact('billing');
+        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3)->with($data4)->with('date', $date->format('y-m-d'));
+    }
+    //
+    public function cancelBilling($id)
+    {
+        $table = Table::find($id);
+        $table->status = '0';
+        $table->billing_status = '0';
+        $table->name = '0';
+        $table->number = '0';
+        $table->ad = '0';
+        $table->save();
+        return redirect()->route('Admin.Dashbroad');
     }
     //
     public function addMenu(Request $request)
@@ -133,10 +173,14 @@ class TableController extends Controller
             $table = Table::find($id);
             $table->status = '0';
             $table->billing_status = '0';
+            $table->name = '0';
+            $table->number = '0';
+            $table->ad = '0';
             $table->save();
         }
         return back();
     }
+    
     //
     public function count_add($id)
     {
@@ -171,6 +215,9 @@ class TableController extends Controller
             $table = Table::find($id);
             $table->status = '0';
             $table->billing_status = '0';
+            $table->name = '0';
+            $table->number = '0';
+            $table->ad = '0';
             $table->save();
         }
         return back();
@@ -209,9 +256,33 @@ class TableController extends Controller
         return view('invoice.report')->with($data);
     }
     //
+    public function monthreport(){
+        $date=new DateTime();
+        $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2),Carbon::now()->subMonth(1)])->get();
+        $data=compact('billing');
+        return view('invoice.report')->with($data);
+    }
+     //
+     public function customreport(){
+        $date=new DateTime();
+        $billing=Billing::all();
+        //$billing=Billing::whereBetween("created_at",['2023-10-12','2023-10-14'])->get();
+        $data=compact('billing');
+        return view('invoice.report')->with($data);
+    }
+    //
     public function MenuRepoet($id){
         $billing_stack = BillingSkack::where("billing_no", '=',$id)->get();
         $data=compact('billing_stack');
         return view('invoice.menuReport')->with($data);
+    }
+    //
+    public function Add_Client(Request $request){
+        $table = Table::find($request->tableno);
+        $table->name = $request['ClientName'];
+        $table->number = $request['ClientPhone'];
+        $table->ad = $request['ClientAddress'];
+        $table->save();
+        return redirect()->route('Admin.Billing2', ['id' => $request->tableno]);
     }
 }

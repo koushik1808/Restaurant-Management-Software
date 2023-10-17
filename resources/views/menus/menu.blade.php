@@ -4,30 +4,51 @@
 
 @section('hero')
 <div class="container">
-  <form action="{{route('Admin.search_menu')}}" method="POST">
+  <form action="{{route('Admin.Add_Client')}}" method="POST">
     <div class="row my-3">
+      @csrf
       <div class="col">
         <label for="" class="form-label">
           Client Name
-          <input type="text" class="form-control">
+          @if ($table->name)
+          <input type="text" value="{{$table->name}}" name="ClientName" class="form-control">
+          @else
+          <input type="text"  name="ClientName" class="form-control">
+          @endif
+         
         </label>
 
       </div>
       <div class="col">
         <label for="" class="form-label">
           Client Phone
-          <input type="text" class="form-control">
+          @if ($table->number)
+          <input type="text" value="{{$table->number}}" name="ClientPhone" class="form-control">
+          @else
+          <input type="text"  name="ClientPhone" class="form-control">
+          @endif
+          
         </label>
 
       </div>
+      <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
       <div class="col">
         <label for="" class="form-label">
           Client Address
-          <input type="text" class="form-control">
+          @if ($table->ad)
+          <input type="text" value="{{$table->ad}}" name="ClientAddress" class="form-control">
+          @else
+          <input type="text"  name="ClientAddress" class="form-control"> 
+          @endif
+          
         </label>
-
+        <button type="submit" class="btn btn-success btn-lg">Add</button>
       </div>
+      
     </div>
+  </form>
+  <form action="{{route('Admin.search_menu')}}" method="POST">
+      <div class="row my-3">
     <div class="row my-3" style="height: 60px">
       <div class="col d-flex gap-3">
 
@@ -39,6 +60,7 @@
 
       </div>
     </div>
+  </div>
   </form>
   {{-- menu started --}}
   <div class="row justify-content-center">
@@ -185,7 +207,7 @@
           <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">KOT &amp; Print<i
               class='bx bxs-printer'></i></a>
           <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Save &amp; Print <i
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Save  <i
               class='bx bxs-printer'></i>
           </a>
         </div>

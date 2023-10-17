@@ -10,7 +10,7 @@ Invoice
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success" id="home-btn">Home</a>
+      <a href="{{route('Admin.Billing2',['id'=>$table->table])}}" class="btn btn-success" id="home-btn">Back</a>
     </div>
   </div>
   <div class="row">
@@ -26,18 +26,18 @@ Invoice
           </div>
           <p class="text-start fw-bold">#Invoice id:- {{$bill}}</p>
           <p class="fw-bold">Date :{{$date}}</p>
-          @if ($billing->name)
-          <p class="fw-bold">Name :{{$billing->name}}</p>
+          @if ($table->name)
+          <p class="fw-bold">Name :{{$table->name}}</p>
           @else
 
           @endif
-          @if ($billing->number)
-          <p class="fw-bold">Number :{{$billing->number}}</p>
+          @if ($table->number)
+          <p class="fw-bold">Number :{{$table->number}}</p>
           @else
 
           @endif
-          @if ($billing->ad)
-          <p class="fw-bold">Address :{{$billing->ad}}</p>
+          @if ($table->ad)
+          <p class="fw-bold">Address :{{$table->ad}}</p>
           @else
 
           @endif
@@ -86,7 +86,8 @@ Invoice
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn"> Print Bill</button>
+      <a href="{{route('Admin.cancelBilling',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Cancel Billing</button></a>
+      <a href="{{route('Admin.Billing_print2',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Complete Billing</button></a>
       
 
     </div>

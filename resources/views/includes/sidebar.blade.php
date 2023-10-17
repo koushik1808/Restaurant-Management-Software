@@ -69,6 +69,18 @@
        Today Report
       </a>
     </li>
+    <li>
+      <a href="{{route('Admin.monthreport')}}" class="btn border-0">
+        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+       Last Monthly Report
+      </a>
+    </li>
+    <li>
+      <a href="{{route('Admin.customreport')}}" class="btn border-0">
+        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+       Custom Report
+      </a>
+    </li>
       {{-- <li>
         <a href="#" class="btn" data-bs-target="#te-collapse" aria-controls="#te-collapse" data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-alipay"></i></span>
