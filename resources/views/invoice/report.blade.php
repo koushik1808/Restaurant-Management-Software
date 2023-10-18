@@ -9,17 +9,11 @@
 
 @section('hero')
 <div class="container-fluid">
-  {{-- <div class="row mb-3">
-    <div class="col py-3 d-flex gap-3">
-      <input type="text" class="form-control rounded" placeholder="Search Table">
-      <div class="btn btn-primary">Search</div>
-    </div>
-  </div>
   <div class="row my-3">
     <div class="col">
-      Select One Table To GO --
+      <a href="#" class="btn btn-warning" data-bs-target="#dateModal" data-bs-toggle="modal">Custom Date</a>
     </div>
-  </div> --}}
+  </div>
   <div class="row gap-lg-4 gap-2 justify-content-center flex-column flex-sm-row">
     <div class="table-responsive-xl">
       <table class="table table-striped table-bordered table-hover table-sm">
@@ -65,6 +59,43 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+  </div>
+
+  {{-- model for custom date --}}
+  <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+      <form action="#" class="w-100">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Custom Date</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="" class="form-lable">
+                From Date:
+                <input type="date" name="" class="form-date" id="">
+              </label>
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">
+                To Date:
+                <input type="date" class="form-date">
+              </label>
+            </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
 
   </div>
