@@ -62,37 +62,41 @@
           Billing
         </a>
       </li>
-    </li>
-    <li>
-      <a href="{{route('Admin.todeyreport')}}" class="btn border-0">
-        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
-       Today Report
-      </a>
-    </li>
-    <li>
-      <a href="{{route('Admin.monthreport')}}" class="btn border-0">
-        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
-       Last Monthly Report
-      </a>
-    </li>
-    <li>
-      <a href="{{route('Admin.customreport')}}" class="btn border-0">
-        <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
-       All Report
-      </a>
-    </li>
-      {{-- <li>
-        <a href="#" class="btn" data-bs-target="#te-collapse" aria-controls="#te-collapse" data-bs-toggle="collapse">
+      </li>
+      <li>
+        <a href="#" class="btn" data-bs-target="#report-collapse" aria-controls="#report-collapse"
+          data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-alipay"></i></span>
           Reports
         </a>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#te-collapse"
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#report-collapse"
           aria-expanded="false"></button>
-        <ul class="collapse" id="te-collapse">
-          <li><a href="" class="btn"> Monthly Reports </a></li>
-          <li><a href="" class="btn"> Custom Reports </a></li>
+        <ul class="collapse" id="report-collapse">
+          <li><a href="{{route('Admin.todeyreport')}}" class="btn ">
+              Today Report
+            </a></li>
+          <li>
+            <a href="{{route('Admin.monthreport')}}" class="btn ">
+
+              Last Monthly Report
+            </a>
+          </li>
+          <li>
+            <a href="{{route('Admin.customreport')}}" class="btn">
+              All &amp; Custom Reports
+            </a>
+          </li>
         </ul>
       </li>
+
+      <li>
+        <a href="#" class="btn">
+          <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+          Settings
+        </a>
+      </li>
+
+      {{--
       <li>
         <a href="#" class="btn" data-bs-target="#st-collapse" data-bs-toggle="collapse" aria-controls="#st-collapse">
           <span class="me-2"><i class="bi bi-bezier"></i></span> Stock Managment
@@ -129,7 +133,7 @@
         </a>
       </li>
       @if (Session::get('LoginName') =='Administrator')
-          
+
       @else
       <li>
         <a href="{{route('Admin.Change_Password')}}" class="btn border-0">
@@ -138,7 +142,7 @@
         </a>
       </li>
       @endif
-      
+
       <li>
         <a href="{{route('Admin.Logout')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>

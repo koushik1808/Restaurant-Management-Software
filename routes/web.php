@@ -65,16 +65,16 @@ Route::middleware('isLogin')->group(function () {
         Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
         //
         Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
-         //
-         Route::get('/monthreport', 'monthreport')->name('Admin.monthreport');
+        //
+        Route::get('/monthreport', 'monthreport')->name('Admin.monthreport');
         //
         Route::post('/customdate', 'customdate')->name('Admin.customdate');
         //
         Route::get('/customreport', 'customreport')->name('Admin.customreport');
         //
-         Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');
+        Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');
         //
-        Route::post('/Add_Client','Add_Client')->name('Admin.Add_Client');
+        Route::post('/Add_Client', 'Add_Client')->name('Admin.Add_Client');
     });
 
     Route::controller(categoryController::class)->group(function () {
@@ -84,8 +84,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/add_category', 'add_category')->name('Admin.add_category');
         //
         Route::post('/added_category', 'added_category')->name('Admin.added_category');
-         //
-         Route::get('/delete_category/{id}', 'delete_category')->name('Admin.delete_category');
+        //
+        Route::get('/delete_category/{id}', 'delete_category')->name('Admin.delete_category');
     });
 
     Route::controller(MenuController::class)->group(function () {
