@@ -67,7 +67,9 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
          //
          Route::get('/monthreport', 'monthreport')->name('Admin.monthreport');
-          //
+        //
+        Route::post('/customdate', 'customdate')->name('Admin.customdate');
+        //
         Route::get('/customreport', 'customreport')->name('Admin.customreport');
         //
          Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');

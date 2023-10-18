@@ -253,22 +253,27 @@ class TableController extends Controller
         $date=new DateTime();
         $billing=Billing::where("created_at", 'like','%'.$date->format('y-m-d').'%')->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data);
+        return view('invoice.report')->with($data)->with('c',0);
     }
     //
     public function monthreport(){
         $date=new DateTime();
         $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2),Carbon::now()->subMonth(1)])->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data);
+        return view('invoice.report')->with($data)->with('c',0);
     }
      //
      public function customreport(){
         $date=new DateTime();
         $billing=Billing::all();
-        //$billing=Billing::whereBetween("created_at",['2023-10-12','2023-10-14'])->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data);
+        return view('invoice.report')->with($data)->with('c',1);
+    }
+     //
+     public function customdate(Request $request){
+        $billing=Billing::whereBetween("created_at",[$request->input('FromDate'),$request->input('ToDate')])->get();
+        $data=compact('billing');
+        return view('invoice.report')->with($data)->with('c',1);
     }
     //
     public function MenuRepoet($id){

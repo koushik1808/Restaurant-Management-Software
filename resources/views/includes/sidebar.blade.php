@@ -78,7 +78,7 @@
     <li>
       <a href="{{route('Admin.customreport')}}" class="btn border-0">
         <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
-       Custom Report
+       All Report
       </a>
     </li>
       {{-- <li>
