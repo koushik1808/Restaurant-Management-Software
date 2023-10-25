@@ -19,6 +19,7 @@
       
   @endif
   
+  @if ($b)
   <div class="row gap-lg-4 gap-2 justify-content-center flex-column flex-sm-row">
     <div class="table-responsive-xl">
       <table class="table table-striped table-bordered table-hover table-sm">
@@ -67,6 +68,9 @@
     </div>
 
   </div>
+  @else
+      
+  @endif
 
   {{-- model for custom date --}}
   <div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

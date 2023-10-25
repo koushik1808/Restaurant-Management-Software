@@ -6,6 +6,8 @@ use App\Models\Billing;
 use App\Models\BillingSkack;
 use App\Models\Manu;
 use App\Models\Table;
+use App\Models\Discount;
+use App\Models\gst;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -76,6 +78,10 @@ class TableController extends Controller
     //
     public function Billing_print($id)
     {
+        $discount = Discount::all()->first();
+        $gst = gst::all()->first();
+        $data5=compact('discount');
+        $data6=compact('gst');
         $date=new DateTime();
         $table = Table::find($id);
         $data1 = $table->billing_status;
@@ -88,11 +94,14 @@ class TableController extends Controller
         }
         $data2 = compact('billing_stack');
        
-        return view('invoice.invoice2')->with($data2)->with('bill', $data1)->with($data3)->with('date', $date->format('y-m-d'));
+        return view('invoice.invoice2')->with($data2)->with('bill', $data1)->with($data3)->with($data6)->with($data5)->with('date', $date->format('y-m-d'));
     }
     //
     public function Billing_print2($id)
     {
+        $discount = Discount::find(1);
+        $gst = gst::find(1);
+        $data5=compact('discount','gst');
         $date=new DateTime();
         $table = Table::find($id);
         $data1 = $table->billing_status;
@@ -121,7 +130,7 @@ class TableController extends Controller
         $table->save();
         
         $data4 = compact('billing');
-        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3)->with($data4)->with('date', $date->format('y-m-d'));
+        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3)->with($data5)->with($data4)->with('date', $date->format('y-m-d'));
     }
     //
     public function cancelBilling($id)
@@ -253,33 +262,42 @@ class TableController extends Controller
         $date=new DateTime();
         $billing=Billing::where("created_at", 'like','%'.$date->format('y-m-d').'%')->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data)->with('c',0);
+        return view('invoice.report')->with($data)->with('c',0)->with('b',1);
     }
     //
     public function monthreport(){
         $date=new DateTime();
         $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2),Carbon::now()->subMonth(1)])->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data)->with('c',0);
+        return view('invoice.report')->with($data)->with('c',0)->with('b',1);
     }
      //
      public function customreport(){
         $date=new DateTime();
         $billing=Billing::all();
         $data=compact('billing');
-        return view('invoice.report')->with($data)->with('c',1);
+        return view('invoice.report')->with($data)->with('c',1)->with('b',0);
     }
      //
      public function customdate(Request $request){
         $billing=Billing::whereBetween("created_at",[$request->input('FromDate'),$request->input('ToDate')])->get();
         $data=compact('billing');
-        return view('invoice.report')->with($data)->with('c',1);
+        return view('invoice.report')->with($data)->with('c',1)->with('b',1);
     }
     //
     public function MenuRepoet($id){
+        $discount = Discount::find(1);
+        $gst = gst::find(1);
+        $data5=compact('discount','gst');
+        $date=new DateTime();
+        $table = Table::find(0);
+        $data1 = $id;
+        $data3 = compact('table');
         $billing_stack = BillingSkack::where("billing_no", '=',$id)->get();
-        $data=compact('billing_stack');
-        return view('invoice.menuReport')->with($data);
+        $data2=compact('billing_stack');
+        $billing = Billing::where("bill_no", '=', $id)->first();
+        $data4 = compact('billing');
+        return view('invoice.invoice')->with($data2)->with('bill', $data1)->with($data3)->with($data5)->with($data4)->with('date', $date->format('y-m-d'));
     }
     //
     public function Add_Client(Request $request){

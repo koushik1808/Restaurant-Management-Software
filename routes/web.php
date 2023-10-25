@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SattingController;
 use App\Http\Controllers\TableController;
 
 /*
@@ -97,6 +98,14 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/public_menu', 'public_menu')->name('Admin.public_menu');
         //
         Route::post('/added_menu', 'added_menu')->name('Admin.added_menu');
+    });
+    Route::controller(SattingController::class)->group(function () {
+        //
+        Route::get('/setting_view', 'setting_view')->name('Admin.setting_view');
+        //
+        Route::get('/gstUpdate/{status}', 'gstUpdate')->name('Admin.gstUpdate');
+        //
+        Route::get('/discountUpdate/{status}', 'discountUpdate')->name('Admin.discountUpdate');
     });
 });
 Route::get('/menus', [MenuController::class, 'view_public_menu']);

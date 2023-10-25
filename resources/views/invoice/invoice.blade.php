@@ -61,6 +61,8 @@ Invoice
               @php
               $i=0;
               $total=0;
+              $dis=0;
+              $gst1=0;
               @endphp
               @foreach ($billing_stack as $item)
               <tr>
@@ -79,8 +81,23 @@ Invoice
           </table>
           <div class="vstack align-items-start">
             <p class="m-0 fw-bold">Total Amount:{{$total}}</p>
+            @if ($gst->status)
+                @php
+                   // $gst=$total*($gst->gst/100);
+                @endphp
+            @else
+                
+            @endif
+            @if ($discount->status)
             <p class="mb-2 fw-bold">Festival Discount 10&percnt;</p>
-            <p class="fw-bold">Net Amount Payable:{{round($total-$total*0.1)}}</p>
+            @php
+                $dis=$total*($discount->discount/100);
+            @endphp
+            @else
+                
+            @endif
+           
+            <p class="fw-bold">Net Amount Payable:{{round($total-$dis+$gst1)}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-3 d-none  fw-bold " id="message">Thank You...<span>Visit Again</span> </p>
           </div>

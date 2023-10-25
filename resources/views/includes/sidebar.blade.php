@@ -83,14 +83,14 @@
           </li>
           <li>
             <a href="{{route('Admin.customreport')}}" class="btn">
-              All &amp; Custom Reports
+               Custom Reports
             </a>
           </li>
         </ul>
       </li>
 
       <li>
-        <a href="#" class="btn">
+        <a href="{{route('Admin.setting_view')}}" class="btn">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
           Settings
         </a>
