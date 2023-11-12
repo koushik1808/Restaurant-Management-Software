@@ -267,7 +267,7 @@ class TableController extends Controller
     //
     public function monthreport(){
         $date=new DateTime();
-        $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2),Carbon::now()->subMonth(1)])->get();
+        $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2)->startOfMonth(),Carbon::now()->subMonth(1)->endOfMonth()])->get();
         $data=compact('billing');
         return view('invoice.report')->with($data)->with('c',0)->with('b',1);
     }

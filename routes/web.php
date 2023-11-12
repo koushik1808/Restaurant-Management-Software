@@ -103,9 +103,13 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::get('/setting_view', 'setting_view')->name('Admin.setting_view');
         //
-        Route::get('/gstUpdate/{status}', 'gstUpdate')->name('Admin.gstUpdate');
+        Route::post('/gstUpdate', 'gstUpdate')->name('Admin.gstUpdate');
         //
-        Route::get('/discountUpdate/{status}', 'discountUpdate')->name('Admin.discountUpdate');
+        Route::post('/discountUpdate', 'discountUpdate')->name('Admin.discountUpdate');
+        //
+        Route::get('/gstUpdate1', 'gstUpdate1')->name('Admin.gstUpdate1');
+        //
+        Route::get('/discountUpdate1', 'discountUpdate1')->name('Admin.discountUpdate1');
     });
 });
 Route::get('/menus', [MenuController::class, 'view_public_menu']);

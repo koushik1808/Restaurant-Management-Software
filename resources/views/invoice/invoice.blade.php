@@ -82,14 +82,15 @@ Invoice
           <div class="vstack align-items-start">
             <p class="m-0 fw-bold">Total Amount:{{$total}}</p>
             @if ($gst->status)
+            <p class="mb-2 fw-bold"> GST {{$gst->gst}}&percnt;</p>
                 @php
-                   // $gst=$total*($gst->gst/100);
+                    $gst1=$total*($gst->gst/100);
                 @endphp
             @else
                 
             @endif
             @if ($discount->status)
-            <p class="mb-2 fw-bold">Festival Discount 10&percnt;</p>
+            <p class="mb-2 fw-bold"> Discount {{$discount->discount}}&percnt;</p>
             @php
                 $dis=$total*($discount->discount/100);
             @endphp

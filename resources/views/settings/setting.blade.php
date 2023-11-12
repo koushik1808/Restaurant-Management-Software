@@ -33,7 +33,7 @@ Settings
           <td>Gst Invoice</td>
           <td class="fw-medium">Status: <span>ON</span></td>
           <td class="text-center">
-            <a href="{{route('Admin.gstUpdate',['status'=>0])}}"> <button class="btn btn-warning">Off</button></a>
+            <a href="{{route('Admin.gstUpdate1')}}"> <button class="btn btn-warning">Off</button></a>
 
           </td>
         </tr>
@@ -58,7 +58,7 @@ Settings
           <td>Festival Discount</td>
           <td class="fw-medium">Status: <span>ON</span></td>
           <td class="text-center">
-            <a href="{{route('Admin.discountUpdate',['status'=>0])}}"> <button class="btn btn-warning">Off</button></a>
+            <a href="{{route('Admin.discountUpdate1')}}"> <button class="btn btn-warning">Off</button></a>
 
           </td>
         </tr>
@@ -86,62 +86,66 @@ Settings
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Gst Informations</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Gst Informations</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        @foreach ($gst as $item)
+       
         <div class="modal-body">
-          <form action="">
+          <form action="{{route('Admin.gstUpdate')}}" method="POST">
+            @csrf
             <div class="mb-3">
               <label for="" class="form-label">
-                Add Gst Number:
-                <input type="text" class="form-control">
+                 Gst Number:
+                <input type="text" name="gstno" value="{{$item->gst_no}}" class="form-control">
               </label>
             </div>
             <div class="mb-3">
               <label for="" class="form-label">
-                Add Gst Parcent:
-                <input type="text" class="form-control">
+                 Gst Parcent:
+                <input type="text" name="gst" value="{{$item->gst}}" class="form-control">
               </label>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+       
       </div>
     </div>
   </div>
-
+     
+  @endforeach
   {{-- modal discount --}}
+  @foreach ($discount as $item)
+      
   <div class="modal fade" id="discount-modal" data-bs-backdrop="static" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Discount Informations</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> Discount Informations</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="">
+          <form action="{{route('Admin.discountUpdate')}}" method="POST">
+           @csrf
             <div class="mb-3">
               <label for="" class="form-label">
-                Add Discount Name:
-                <input type="text" class="form-control">
+                 Discount Parcent:
+                <input type="text" name="dis" value="{{$item->discount}}" class="form-control">
               </label>
             </div>
-            <div class="mb-3">
-              <label for="" class="form-label">
-                Add Discount Parcent:
-                <input type="text" class="form-control">
-              </label>
+            <div class="modal-footer">
+              <button type="submit"  class="btn btn-primary">Save changes</button>
             </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+       
       </div>
     </div>
   </div>
+  @endforeach
 </div>
 @endsection
