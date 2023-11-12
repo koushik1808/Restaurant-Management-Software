@@ -4,12 +4,64 @@
 
 @section('hero')
 <div class="container">
-  <div class="row mb-3" style="height: 60px">
-    <div class="col d-flex gap-3">
-      <input type="text" class="form-control rounded" placeholder="Search Menu">
-      <div class="btn btn-primary">Search Menu</div>
+  <form action="{{route('Admin.Add_Client')}}" method="POST">
+    <div class="row my-3">
+      @csrf
+      <div class="col">
+        <label for="" class="form-label">
+          Client Name
+          @if ($table->name)
+          <input type="text" value="{{$table->name}}" name="ClientName" class="form-control">
+          @else
+          <input type="text"  name="ClientName" class="form-control">
+          @endif
+         
+        </label>
+
+      </div>
+      <div class="col">
+        <label for="" class="form-label">
+          Client Phone
+          @if ($table->number)
+          <input type="text" value="{{$table->number}}" name="ClientPhone" class="form-control">
+          @else
+          <input type="text"  name="ClientPhone" class="form-control">
+          @endif
+          
+        </label>
+
+      </div>
+      <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+      <div class="col">
+        <label for="" class="form-label">
+          Client Address
+          @if ($table->ad)
+          <input type="text" value="{{$table->ad}}" name="ClientAddress" class="form-control">
+          @else
+          <input type="text"  name="ClientAddress" class="form-control"> 
+          @endif
+          
+        </label>
+        <button type="submit" class="btn btn-success btn-lg">Add</button>
+      </div>
+      
+    </div>
+  </form>
+  <form action="{{route('Admin.search_menu')}}" method="POST">
+      <div class="row my-3">
+    <div class="row my-3" style="height: 60px">
+      <div class="col d-flex gap-3">
+
+
+        @csrf
+        <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+        <input type="text" class="form-control rounded" name="menu_name" placeholder="Search Menu">
+        <div class="btn btn-primary"><button class="btn btn-primary">Search</button></div>
+
+      </div>
     </div>
   </div>
+  </form>
   {{-- menu started --}}
   <div class="row justify-content-center">
     <div class="fixed-bottom z-9 d-lg-none">
@@ -60,7 +112,11 @@
 
         @foreach ($catagory as $cata)
         <div id="{{ $cata->category }}">
-          <h4>{{ $cata->category }}</h4>
+          @if ($c==1)
+          <h4>{{ $cata->category }} </h4>
+          @else
+
+          @endif
           @foreach ($menu as $menus)
           @if ($menus->category == $cata->category)
           <div class="card mb-3">
@@ -148,10 +204,12 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">Kitchen<i class='bx bxs-printer'></i></a>
+          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">KOT &amp; Print<i
+              class='bx bxs-printer'></i></a>
           <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Bill
-            Total</a>
+          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Save  <i
+              class='bx bxs-printer'></i>
+          </a>
         </div>
       </div>
     </div>

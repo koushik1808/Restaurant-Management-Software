@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SattingController;
 use App\Http\Controllers\TableController;
 
 /*
@@ -56,8 +57,25 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::get('/Billing_print/{id}', 'Billing_print')->name('Admin.Billing_print');
         //
+        Route::get('/Billing_print2/{id}', 'Billing_print2')->name('Admin.Billing_print2');
+        //
+        Route::get('/cancelBilling/{id}', 'cancelBilling')->name('Admin.cancelBilling');
+        //
         Route::get('/Kitchen/{id}', 'Kitchen')->name('Admin.Kitchen');
-       
+        //
+        Route::post('/search_menu', 'search_menu')->name('Admin.search_menu');
+        //
+        Route::get('/todeyreport', 'todeyreport')->name('Admin.todeyreport');
+        //
+        Route::get('/monthreport', 'monthreport')->name('Admin.monthreport');
+        //
+        Route::post('/customdate', 'customdate')->name('Admin.customdate');
+        //
+        Route::get('/customreport', 'customreport')->name('Admin.customreport');
+        //
+        Route::get('/MenuRepoet/{id}', 'MenuRepoet')->name('Admin.MenuRepoet');
+        //
+        Route::post('/Add_Client', 'Add_Client')->name('Admin.Add_Client');
     });
 
     Route::controller(categoryController::class)->group(function () {
@@ -67,16 +85,31 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/add_category', 'add_category')->name('Admin.add_category');
         //
         Route::post('/added_category', 'added_category')->name('Admin.added_category');
+        //
+        Route::get('/delete_category/{id}', 'delete_category')->name('Admin.delete_category');
     });
 
     Route::controller(MenuController::class)->group(function () {
-         //
-         Route::get('/addNewMenu', 'addNewMenu')->name('Admin.addNewMenu');
+        //
+        Route::get('/addNewMenu', 'addNewMenu')->name('Admin.addNewMenu');
         //
         Route::get('/add_menu', 'add_menu')->name('Admin.add_menu');
         // route for public menu
-        Route::get('/public_menu', 'view_public_menu')->name('Admin.public_menu');
+        Route::get('/public_menu', 'public_menu')->name('Admin.public_menu');
         //
         Route::post('/added_menu', 'added_menu')->name('Admin.added_menu');
     });
+    Route::controller(SattingController::class)->group(function () {
+        //
+        Route::get('/setting_view', 'setting_view')->name('Admin.setting_view');
+        //
+        Route::post('/gstUpdate', 'gstUpdate')->name('Admin.gstUpdate');
+        //
+        Route::post('/discountUpdate', 'discountUpdate')->name('Admin.discountUpdate');
+        //
+        Route::get('/gstUpdate1', 'gstUpdate1')->name('Admin.gstUpdate1');
+        //
+        Route::get('/discountUpdate1', 'discountUpdate1')->name('Admin.discountUpdate1');
+    });
 });
+Route::get('/menus', [MenuController::class, 'view_public_menu']);

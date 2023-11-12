@@ -36,9 +36,14 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="{{route('Admin.Profile')}}">Profile</a></li>
+              @if (Session::get('LoginName') =='Administrator')
+                  
+              @else
               <li>
                 <a class="dropdown-item" href="{{route('Admin.Change_Password')}}">Change Password</a>
               </li>
+              @endif
+              
               <li>
                 <a class="dropdown-item" href="{{route('Admin.Logout')}}">Logout</a>
               </li>

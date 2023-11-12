@@ -10,7 +10,7 @@ Invoice
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success" id="home-btn">Home</a>
+      <a href="{{route('Admin.Billing2',['id'=>$table->table])}}" class="btn btn-success" id="home-btn">Back</a>
     </div>
   </div>
   <div class="row">
@@ -26,18 +26,18 @@ Invoice
           </div>
           <p class="text-start fw-bold">#Invoice id:- {{$bill}}</p>
           <p class="fw-bold">Date :{{$date}}</p>
-          @if ($billing->name)
-          <p class="fw-bold">Name :{{$billing->name}}</p>
+          @if ($table->name)
+          <p class="fw-bold">Name :{{$table->name}}</p>
           @else
 
           @endif
-          @if ($billing->number)
-          <p class="fw-bold">Number :{{$billing->number}}</p>
+          @if ($table->number)
+          <p class="fw-bold">Number :{{$table->number}}</p>
           @else
 
           @endif
-          @if ($billing->ad)
-          <p class="fw-bold">Address :{{$billing->ad}}</p>
+          @if ($table->ad)
+          <p class="fw-bold">Address :{{$table->ad}}</p>
           @else
 
           @endif
@@ -61,7 +61,7 @@ Invoice
               @php
               $i=0;
               $total=0;
-              $dis=0;
+               $dis=0;
               $gst1=0;
               @endphp
               @foreach ($billing_stack as $item)
@@ -81,30 +81,32 @@ Invoice
           </table>
           <div class="vstack align-items-start">
             <p class="m-0 fw-bold">Total Amount:{{$total}}</p>
-            @if ($gst->status)
-            <p class="mb-2 fw-bold"> GST {{$gst->gst}}&percnt;</p>
-                @php
-                    $gst1=$total*($gst->gst/100);
-                @endphp
-            @else
-                
-            @endif
-            @if ($discount->status)
+        @if ($gst->status)
+        <p class="mb-2 fw-bold"> GST {{$gst->gst}}&percnt;</p>
+            @php
+                $gst1=$total*($gst->gst/100);
+            @endphp
+        @else
+            
+        @endif
+        @if ($discount->status)
             <p class="mb-2 fw-bold"> Discount {{$discount->discount}}&percnt;</p>
             @php
                 $dis=$total*($discount->discount/100);
             @endphp
-            @else
-                
-            @endif
+        @else
+            
+        @endif
+       
+        <p class="fw-bold">Net Amount Payable:{{round($total-$dis+$gst1)}}</p>
            
-            <p class="fw-bold">Net Amount Payable:{{round($total-$dis+$gst1)}}</p>
             <hr class="w-100 border-2" />
             <p class="fs-3 d-none  fw-bold " id="message">Thank You...<span>Visit Again</span> </p>
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn"> Print Bill</button>
+      <a href="{{route('Admin.cancelBilling',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Cancel Billing</button></a>
+      <a href="{{route('Admin.Billing_print2',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Complete Billing</button></a>
       
 
     </div>
