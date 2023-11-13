@@ -33,7 +33,14 @@ class MenuController extends Controller
         $data = compact('menu');
         return view('publicMenu.menus', )->with($data)->with($cataData);
     }
-
+    //
+    public function public_menu_delete($id)
+    {
+        $menu = Manu::find($id);
+        $menu->delete();
+        return redirect()->route('Admin.public_menu');
+    }
+    //
     public function view_public_menu()
     {
         $menu = Manu::all();

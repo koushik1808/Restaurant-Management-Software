@@ -8,9 +8,15 @@
       <div class="col-md-8 col-lg-7 col-xl-6">
         <img src="{{ asset('public/image/login-logo.svg') }}" class="img-fluid" alt="Phone image">
       </div>
+      
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <form action="{{route('Admin.login_check')}}" method="post" class="py-3 p-md-0">
           <!-- Email input -->
+         
+          @if (Session::has('lock_status'))
+            <p class="form-text text-danger">{{Session::get('lock_status')}}</p>
+          @endif
+         
           @csrf
           <div class="form-outline mb-4">
             <label class="form-label" for="form1Example13">Email address</label>

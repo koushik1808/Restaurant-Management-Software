@@ -32,6 +32,9 @@ class AdminController extends Controller
 
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
+                if ($user->lock_status == 1) {
+                    return back()->with('lock_status', 'This account is locked');
+                }
                 $request->session()->put('LoginName', $user->name);
                 return redirect()->route('Admin.Dashbroad');
             } else {

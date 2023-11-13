@@ -143,6 +143,17 @@
       </li>
       @endif
 
+      @if (Session::get('LoginName') =='Administrator')
+      <li>
+        <a href="{{route('Admin.lock_account')}}" class="btn border-0">
+          <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
+          Lock Accounts
+        </a>
+      </li>
+      @else
+      
+      @endif
+
       <li>
         <a href="{{route('Admin.Logout')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>

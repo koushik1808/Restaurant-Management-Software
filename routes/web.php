@@ -98,6 +98,8 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/public_menu', 'public_menu')->name('Admin.public_menu');
         //
         Route::post('/added_menu', 'added_menu')->name('Admin.added_menu');
+        // route for delete public menu
+        Route::get('/public_menu_delete/{id}', 'public_menu_delete')->name('Admin.public_menu_delete');
     });
     Route::controller(SattingController::class)->group(function () {
         //
@@ -110,6 +112,12 @@ Route::middleware('isLogin')->group(function () {
         Route::get('/gstUpdate1', 'gstUpdate1')->name('Admin.gstUpdate1');
         //
         Route::get('/discountUpdate1', 'discountUpdate1')->name('Admin.discountUpdate1');
+        //
+        Route::get('/lock_account', 'lock_account')->name('Admin.lock_account');
+        //
+        Route::get('/lock_account1/{id}', 'lock_account1')->name('Admin.lock_account1');
+        //
+        Route::get('/unlock_account/{id}', 'unlock_account')->name('Admin.unlock_account');
     });
 });
 Route::get('/menus', [MenuController::class, 'view_public_menu']);

@@ -73,7 +73,7 @@ Public Menus
                 <p class="fw-bold ps-3 m-0">
                   Rs {{ $menus->Manu_price }}.00
                 </p>
-                <button class="btn btn-danger">Delete</button>
+                <a href="{{route('Admin.public_menu_delete',['id'=>$menus->id])}}" ><button class="btn btn-danger">Delete</button></a>
               </div>
             </div>
           </div>
