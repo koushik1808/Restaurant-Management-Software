@@ -127,7 +127,7 @@
                   <img src="{{ asset('public/image/veg.png') }}" class="img-fluid" alt="veg-logo">
                   {{ $menus->Manu_name }}
                 </div>
-                <input type="text" name="tableno" hidden value="{{$table->table}}" class="form-control">
+                <input type="text" name="tableno" hidden value="{{$table->id}}" class="form-control">
                 <input type="text" name="menuid" hidden value="{{$menus->id}}" class="form-control">
                 <div class="hstack justify-content-between align-items-center">
                   <p class="fw-bold ps-3 m-0">
@@ -204,10 +204,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a href="{{route('Admin.Kitchen',['id'=>$table->table])}}" class="btn btn-info">KOT &amp; Print<i
+          <a href="{{route('Admin.Kitchen',['id'=>$table->id])}}" class="btn btn-info">KOT &amp; Print<i
               class='bx bxs-printer'></i></a>
           <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success">Checkout</a>
-          <a href="{{route('Admin.Billing_print',['id'=>$table->table])}}" class="btn btn-warning">Save  <i
+          <a href="{{route('Admin.Billing_print',['id'=>$table->id])}}" class="btn btn-warning">Save  <i
               class='bx bxs-printer'></i>
           </a>
         </div>

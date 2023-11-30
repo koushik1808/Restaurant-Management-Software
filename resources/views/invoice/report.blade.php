@@ -49,7 +49,7 @@
             <td><a href="{{route('Admin.MenuRepoet',['id'=>$item->bill_no])}}">{{$item->bill_no}}</a></td>
             <td>{{$item->total_manu}}</td>
             <td>{{$item->total}}</td>
-            <td>{{round($item->total-$item->total*0.1)}}</td>
+            <td>{{round($item->total- $item->total*$item->dis/100 + $item->total*$item->gst_no/100)}}</td>
             <td>{{$item->created_at}}</td>
           </tr>
           @endforeach

@@ -10,7 +10,12 @@ Invoice
 <div class="container">
   <div class="row">
     <div class="col">
+      @if (Session::get('LoginRoll') =='1')
       <a href="{{route('Admin.Dashbroad')}}" class="btn btn-success" id="home-btn">Home</a>
+      @else
+      <a href="{{route('User.Dashbroad')}}" class="btn btn-success" id="home-btn">Home</a>
+      @endif
+      
     </div>
   </div>
   <div class="row">

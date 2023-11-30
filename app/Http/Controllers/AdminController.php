@@ -13,7 +13,6 @@ class AdminController extends Controller
     //
     //
 
-
     public function Login()
     {
         return view('auth.login');
@@ -36,6 +35,7 @@ class AdminController extends Controller
                     return back()->with('lock_status', 'This account is locked');
                 }
                 $request->session()->put('LoginName', $user->name);
+                $request->session()->put('LoginRoll', "1");
                 return redirect()->route('Admin.Dashbroad');
             } else {
                 return back()->with('fall_password', 'This password is wrong');
@@ -72,6 +72,7 @@ class AdminController extends Controller
     {
         if (Session::has('LoginName')) {
             Session::pull('LoginName');
+            Session::pull('LoginRoll');
             return redirect()->route('Admin.login');
         }
     }

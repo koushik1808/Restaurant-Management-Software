@@ -6,6 +6,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SattingController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,16 @@ Route::controller(AdminController::class)->group(function () {
 
 });
 
+Route::controller(UserController::class)->group(function () {
+    //
+    Route::get('/User_Login', 'User_Login')->name('User.login');
+    //
+    Route::post('/User_login_check', 'login_check')->name('User.login_check');
+    //
+    Route::get('/User_logout', 'Logout')->name('User.Logout');
+
+});
+
 Route::middleware('isLogin')->group(function () {
     Route::controller(AdminController::class)->group(function () {
         //
@@ -40,6 +51,8 @@ Route::middleware('isLogin')->group(function () {
     Route::controller(TableController::class)->group(function () {
         //
         Route::get('/Dashbroad', 'Dashbroad')->name('Admin.Dashbroad');
+         //
+         Route::get('/User_Dashbroad', 'User_Dashbroad')->name('User.Dashbroad');
         //
         Route::get('/Billing/{id}', 'Billing')->name('Admin.Billing');
         //
@@ -109,9 +122,9 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::post('/discountUpdate', 'discountUpdate')->name('Admin.discountUpdate');
         //
-        Route::get('/gstUpdate1', 'gstUpdate1')->name('Admin.gstUpdate1');
+        Route::get('/gstUpdate1/{id}', 'gstUpdate1')->name('Admin.gstUpdate1');
         //
-        Route::get('/discountUpdate1', 'discountUpdate1')->name('Admin.discountUpdate1');
+        Route::get('/discountUpdate1/{id}', 'discountUpdate1')->name('Admin.discountUpdate1');
         //
         Route::get('/lock_account', 'lock_account')->name('Admin.lock_account');
         //

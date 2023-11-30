@@ -10,12 +10,22 @@
 
     <ul class="list-unstyled d-flex flex-column gap-3" id="sidebar-list">
       <li class="">
+        @if (Session::get('LoginRoll') =='1')
         <a href="{{route('Admin.Dashbroad')}}" class="btn">
           <span class="me-2">
             <i class="bi bi-grid-1x2-fill"></i>
           </span>
           Dashbroad
         </a>
+        @else
+        <a href="{{route('User.Dashbroad')}}" class="btn">
+          <span class="me-2">
+            <i class="bi bi-grid-1x2-fill"></i>
+          </span>
+          Dashbroad
+        </a> 
+        @endif
+       
       </li>
       <li>
         <a href="#" class="btn" data-bs-target="#ad-collapse" aria-controls="#ad-collapse" data-bs-toggle="collapse">
@@ -96,30 +106,6 @@
         </a>
       </li>
 
-      {{--
-      <li>
-        <a href="#" class="btn" data-bs-target="#st-collapse" data-bs-toggle="collapse" aria-controls="#st-collapse">
-          <span class="me-2"><i class="bi bi-bezier"></i></span> Stock Managment
-        </a>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#st-collapse"
-          aria-expanded="false"></button>
-        <ul class="collapse" id="st-collapse">
-          <li><a href="" class="btn"> Add Stock </a></li>
-          <li><a href="" class="btn"> Manage Inventory </a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="btn" data-bs-target="#stt-collapse" data-bs-toggle="collapse" aria-controls="#stt-collapse">
-          <span class="me-2"><i class="bi bi-boxes"></i></span>
-          Financial Reports
-        </a>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stt-collapse"
-          aria-expanded="false"></button>
-        <ul class="collapse" id="stt-collapse">
-          <li><a href="#" class="btn"> Monthly Reports </a></li>
-          <li><a href="#" class="btn"> Growth Reports </a></li>
-        </ul>
-      </li> --}}
 
       <hr class="hr" />
       <li>
@@ -135,30 +121,51 @@
       @if (Session::get('LoginName') =='Administrator')
 
       @else
+      @if (Session::get('LoginRoll') =='1')
       <li>
         <a href="{{route('Admin.Change_Password')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
           Change Password
         </a>
       </li>
+      @else
+          
+      @endif
+      
       @endif
 
       @if (Session::get('LoginName') =='Administrator')
       <li>
+        @if (Session::get('LoginRoll') =='1')
+        @if (Session::get('LoginName') =='Administrator')
         <a href="{{route('Admin.lock_account')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
           Lock Accounts
         </a>
+        @endif
+        
+        @else
+            
+        @endif
+        
       </li>
       @else
       
       @endif
 
       <li>
+        @if (Session::get('LoginRoll') =='1')
         <a href="{{route('Admin.Logout')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
           Logout
         </a>
+        @else
+        <a href="{{route('User.Logout')}}" class="btn border-0">
+          <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+          Logout
+        </a>
+        @endif
+        
       </li>
     </ul>
   </div>

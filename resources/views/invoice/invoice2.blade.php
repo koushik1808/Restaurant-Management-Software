@@ -10,7 +10,7 @@ Invoice
 <div class="container">
   <div class="row">
     <div class="col">
-      <a href="{{route('Admin.Billing2',['id'=>$table->table])}}" class="btn btn-success" id="home-btn">Back</a>
+      <a href="{{route('Admin.Billing2',['id'=>$table->id])}}" class="btn btn-success" id="home-btn">Back</a>
     </div>
   </div>
   <div class="row">
@@ -105,8 +105,8 @@ Invoice
           </div>
         </div>
       </div>
-      <a href="{{route('Admin.cancelBilling',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Cancel Billing</button></a>
-      <a href="{{route('Admin.Billing_print2',['id'=>$table->table])}}"><button class="btn btn-primary my-4" > Complete Billing</button></a>
+      <a href="{{route('Admin.cancelBilling',['id'=>$table->id])}}"><button class="btn btn-primary my-4" > Cancel Billing</button></a>
+      <a href="{{route('Admin.Billing_print2',['id'=>$table->id])}}"><button class="btn btn-primary my-4" > Complete Billing</button></a>
       
 
     </div>

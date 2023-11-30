@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/RestaurantManagementSoftware'),
+    'url' => env('APP_URL', 'http://localhost/RestaurantDemo'),
 
     'asset_url' => env('ASSET_URL'),
 

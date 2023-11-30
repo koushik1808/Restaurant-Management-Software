@@ -33,7 +33,7 @@ Settings
           <td>Gst Invoice</td>
           <td class="fw-medium">Status: <span>ON</span></td>
           <td class="text-center">
-            <a href="{{route('Admin.gstUpdate1')}}"> <button class="btn btn-warning">Off</button></a>
+            <a href="{{route('Admin.gstUpdate1',['id'=>$item->id])}}"> <button class="btn btn-warning">Off</button></a>
 
           </td>
         </tr>
@@ -58,7 +58,7 @@ Settings
           <td>Festival Discount</td>
           <td class="fw-medium">Status: <span>ON</span></td>
           <td class="text-center">
-            <a href="{{route('Admin.discountUpdate1')}}"> <button class="btn btn-warning">Off</button></a>
+            <a href="{{route('Admin.discountUpdate1',['id'=>$item->id])}}"> <button class="btn btn-warning">Off</button></a>
 
           </td>
         </tr>
@@ -98,6 +98,7 @@ Settings
               <label for="" class="form-label">
                  Gst Number:
                 <input type="text" name="gstno" value="{{$item->gst_no}}" class="form-control">
+                <input type="hidden" name="id" value="{{$item->id}}" class="form-control">
               </label>
             </div>
             <div class="mb-3">
@@ -135,6 +136,7 @@ Settings
               <label for="" class="form-label">
                  Discount Parcent:
                 <input type="text" name="dis" value="{{$item->discount}}" class="form-control">
+                <input type="hidden" name="id" value="{{$item->id}}" class="form-control">
               </label>
             </div>
             <div class="modal-footer">

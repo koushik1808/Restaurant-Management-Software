@@ -12,13 +12,21 @@ use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Session;
 
 class TableController extends Controller
 {
     //
     public function Dashbroad()
     {
-        $table = Table::all();
+        $table = Table::where("user", '=', 'Admin')->get();
+        $data = compact('table');
+        return view('admin.dashbroad')->with($data);
+    }
+    //
+    public function User_Dashbroad()
+    {
+        $table = Table::where("user", '=', Session::get('LoginName'))->get();
         $data = compact('table');
         return view('admin.dashbroad')->with($data);
     }
@@ -36,8 +44,13 @@ class TableController extends Controller
     //
     public function Billing2($id)
     {
-        $menu = Manu::all();
-        $catagory = Manu::select('category')->distinct()->get();
+        if(Session::get('LoginRoll') =='1'){
+            $menu = Manu::where("user", '=', "Admin")->get();
+            $catagory = Manu::select('category')->where("user", '=', "Admin")->distinct()->get();
+        }else{
+            $menu = Manu::where("user", '=', Session::get('LoginName'))->get();
+            $catagory = Manu::select('category')->where("user", '=', Session::get('LoginName'))->distinct()->get();
+        }
         $cataData = compact('catagory');
         $data = compact('menu');
 
@@ -70,7 +83,7 @@ class TableController extends Controller
             $billing_stack->manu = $menu->Manu_name;
             $billing_stack->price = $menu->Manu_price;
             $billing_stack->save();
-            return redirect()->route('Admin.Billing2', ['id' => $request->tableno]);
+            return redirect()->route('Admin.Billing2', ['id' => $table->id]);
         } else {
             return back()->with('fall_code', 'This Menu code is wrong');
         }
@@ -78,8 +91,13 @@ class TableController extends Controller
     //
     public function Billing_print($id)
     {
-        $discount = Discount::all()->first();
-        $gst = gst::all()->first();
+        if(Session::get('LoginRoll') =='1'){
+            $discount = Discount::where("user","=","Admin")->get();
+            $gst = gst::where("user","=","Admin")->get();
+        }else{
+            $discount = Discount::where("user","=",Session::get('LoginName'))->first();
+            $gst = gst::where("user","=",Session::get('LoginName'))->first();
+        }
         $data5=compact('discount');
         $data6=compact('gst');
         $date=new DateTime();
@@ -99,8 +117,22 @@ class TableController extends Controller
     //
     public function Billing_print2($id)
     {
-        $discount = Discount::find(1);
-        $gst = gst::find(1);
+        if(Session::get('LoginRoll') =='1'){
+            $discount = Discount::where("user","=","Admin")->first();
+            $gst = gst::where("user","=","Admin")->first();
+        }else{
+            $discount = Discount::where("user","=",Session::get('LoginName'))->first();
+            $gst = gst::where("user","=",Session::get('LoginName'))->first();
+        }
+        
+        if(Session::get('LoginRoll') =='1'){
+            $discount1 = Discount::where("user","=","Admin")->where("status","=","1")->first();
+            $gst1 = gst::where("user","=","Admin")->where("status","=","1")->first();
+        }else{
+            $discount1 = Discount::where("user","=",Session::get('LoginName'))->where("status","=","1")->first();
+            $gst1 = gst::where("user","=",Session::get('LoginName'))->where("status","=","1")->first();
+        }
+
         $data5=compact('discount','gst');
         $date=new DateTime();
         $table = Table::find($id);
@@ -117,7 +149,21 @@ class TableController extends Controller
         $billing->bill_no=$table->billing_status;
         $billing->total_manu=$count;
         $billing->total=$total;
+        if( is_null($gst1)){
+            $billing->gst_no=0;
+        }else{
+            $billing->gst_no=$gst->gst;
+        }
+        if( is_null($discount1)){
+            $billing->dis=0;
+        }else{
+            $billing->dis=$discount->discount;
+        }
+        
         $billing->name=$table->name;
+        if(Session::get('LoginRoll') !='1'){
+            $billing->user=Session::get('LoginName');
+        }
         $billing->number=$table->number;
         $billing->ad=$table->ad;
         $billing->save();
@@ -142,7 +188,11 @@ class TableController extends Controller
         $table->number = '0';
         $table->ad = '0';
         $table->save();
-        return redirect()->route('Admin.Dashbroad');
+        if(Session::get('LoginRoll') =='1'){
+            return redirect()->route('Admin.Dashbroad');
+        }else{
+            return redirect()->route('User.Dashbroad');
+        }
     }
     //
     public function addMenu(Request $request)
@@ -245,7 +295,7 @@ class TableController extends Controller
     }
     //
     public function search_menu(Request $request){
-            $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->get();
+            $menu = Manu::where("Manu_name", 'like','%'.$request->input('menu_name').'%')->where("user", '=', Session::get('LoginName'))->get();
             $catagory = Manu::select('category')->distinct()->get();
             $cataData = compact('catagory');
             $data = compact('menu');
@@ -260,27 +310,27 @@ class TableController extends Controller
     //
     public function todeyreport(){
         $date=new DateTime();
-        $billing=Billing::where("created_at", 'like','%'.$date->format('y-m-d').'%')->get();
+        $billing=Billing::where("created_at", 'like','%'.$date->format('y-m-d').'%')->where("user", '=', Session::get('LoginName'))->get();
         $data=compact('billing');
         return view('invoice.report')->with($data)->with('c',0)->with('b',1);
     }
     //
     public function monthreport(){
         $date=new DateTime();
-        $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2)->startOfMonth(),Carbon::now()->subMonth(1)->endOfMonth()])->get();
+        $billing=Billing::whereBetween("created_at", [Carbon::now()->subMonth(2)->startOfMonth(),Carbon::now()->subMonth(1)->endOfMonth()])->where("user", '=', Session::get('LoginName'))->get();
         $data=compact('billing');
         return view('invoice.report')->with($data)->with('c',0)->with('b',1);
     }
      //
      public function customreport(){
         $date=new DateTime();
-        $billing=Billing::all();
+        $billing=Billing::where("user", '=', Session::get('LoginName'));
         $data=compact('billing');
         return view('invoice.report')->with($data)->with('c',1)->with('b',0);
     }
      //
      public function customdate(Request $request){
-        $billing=Billing::whereBetween("created_at",[$request->input('FromDate'),$request->input('ToDate')])->get();
+        $billing=Billing::whereBetween("created_at",[$request->input('FromDate'),$request->input('ToDate')])->where("user", '=', Session::get('LoginName'))->get();
         $data=compact('billing');
         return view('invoice.report')->with($data)->with('c',1)->with('b',1);
     }
