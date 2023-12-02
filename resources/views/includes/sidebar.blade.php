@@ -27,6 +27,7 @@
         @endif
        
       </li>
+
       <li>
         <a href="#" class="btn" data-bs-target="#ad-collapse" aria-controls="#ad-collapse" data-bs-toggle="collapse">
           <span class="me-2"><i class="bi bi-calendar2-x-fill"></i>
@@ -40,6 +41,8 @@
           <li><a href="{{route('Admin.view_category')}}" class="btn">Manage Catagory </a></li>
         </ul>
       </li>
+
+
       <li>
         <a href="#" class="btn" data-bs-target="#at-collapse" data-bs-toggle="collapse" aria-controls="#at-collapse">
           <span class="me-2"><i class="bi bi-calendar-check"></i></span>
@@ -52,6 +55,8 @@
           <li><a href="{{ route('Admin.public_menu') }}" class="btn"> See All Menus </a></li>
         </ul>
       </li>
+
+
       <li>
         <a href="#" class="btn" data-bs-target="#fe-collapse" data-bs-toggle="collapse" aria-controls="#fe-collapse">
           <span class="me-2"><i class="bi bi-cash-coin"></i></span>
@@ -60,19 +65,30 @@
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fe-collapse"
           aria-expanded="false"></button>
         <ul class="collapse" id="fe-collapse">
+          @if (Session::get('LoginRoll') =='2')
+          <li><a href="#" onclick="update()" class="btn"> Add Table </a></li>
+          @else
           <li><a href="#" class="btn"> Add Table </a></li>
+          @endif
+          
           <li><a href="#" class="btn"> See All Tables </a></li>
           <li><a href="{{route('Admin.Dashbroad')}}" class="btn">Manage Tables</a></li>
 
         </ul>
       </li>
+
+      @if (Session::get('LoginRoll') =='1')
       <li>
         <a href="{{route('Admin.Billing2',['id'=>0])}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
           Billing
         </a>
       </li>
-      </li>
+      @else
+          
+      @endif
+     
+     
       <li>
         <a href="#" class="btn" data-bs-target="#report-collapse" aria-controls="#report-collapse"
           data-bs-toggle="collapse">
@@ -84,7 +100,9 @@
         <ul class="collapse" id="report-collapse">
           <li><a href="{{route('Admin.todeyreport')}}" class="btn ">
               Today Report
-            </a></li>
+            </a>
+          </li>
+          @if (Session::get('LoginRoll') =='1')
           <li>
             <a href="{{route('Admin.monthreport')}}" class="btn ">
 
@@ -98,7 +116,40 @@
           </li>
         </ul>
       </li>
+        @else
+          @if (Session::get('LoginRoll') =='3')
+          <li>
+            <a href="{{route('Admin.monthreport')}}" class="btn ">
 
+              Last Monthly Report
+            </a>
+          </li>
+          <li>
+            <a href="{{route('Admin.customreport')}}" class="btn">
+               Custom Reports
+            </a>
+          </li>
+        </ul>
+      </li>
+          @else
+          <li>
+            <a href="#" onclick="update()" class="btn ">
+
+              Last Monthly Report
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="update()" class="btn">
+               Custom Reports
+            </a>
+          </li>
+        </ul>
+      </li>
+          @endif
+              
+        @endif
+          
+     
       <li>
         <a href="{{route('Admin.setting_view')}}" class="btn">
           <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
@@ -136,17 +187,18 @@
 
       @if (Session::get('LoginName') =='Administrator')
       <li>
-        @if (Session::get('LoginRoll') =='1')
-        @if (Session::get('LoginName') =='Administrator')
+        <a href="{{route('User.details')}}" class="btn">
+          <span class="me-2"><i class="bi bi-box-arrow-right"></i></span>
+          User Details
+        </a>
+      </li>
+      
+      <li>
+        
         <a href="{{route('Admin.lock_account')}}" class="btn border-0">
           <span class="me-2"><i class="bi bi-pass-fill"></i> </span>
           Lock Accounts
         </a>
-        @endif
-        
-        @else
-            
-        @endif
         
       </li>
       @else
@@ -192,3 +244,9 @@
 
   }
 </style>
+
+<script>
+  function update(){
+    alert("Update package \nContact 7076299025 \nMail id info@procenturetech.com ");
+  }
+</script>

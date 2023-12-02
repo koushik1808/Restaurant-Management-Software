@@ -53,4 +53,10 @@ class UserController extends Controller
             return redirect()->route('User.login');
         }
     }
+
+    public function User_details(){
+        $user=user::all();
+        $data=compact('user');
+        return view('viewUsers.user')->with($data);
+    }
 }

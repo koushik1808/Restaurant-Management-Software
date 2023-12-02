@@ -48,6 +48,14 @@ Route::middleware('isLogin')->group(function () {
         //
         Route::post('/Changed_Password', 'Changed_Password')->name('Admin.Changed_Password');
     });
+
+    Route::controller(UserController::class)->group(function () {
+        //
+        Route::get('/User_details', 'User_details')->name('User.details');
+        
+    
+    });
+
     Route::controller(TableController::class)->group(function () {
         //
         Route::get('/Dashbroad', 'Dashbroad')->name('Admin.Dashbroad');

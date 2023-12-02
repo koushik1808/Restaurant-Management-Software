@@ -109,7 +109,12 @@ Invoice
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-4" id="print-btn"> Print Bill</button>
+      @if (Session::get('LoginRoll') =='2')
+      <button class="btn btn-primary my-4" onclick="update()"> Print Bill</button>
+      @else
+      <button class="btn btn-primary my-4" id="print-btn"> Print Bill</button> 
+      @endif
+      
       
 
     </div>
@@ -167,4 +172,9 @@ Invoice
   })
 </script>
 
+<script>
+  function update(){
+    alert("Update package \nContact 7076299025 \nMail id info@procenturetech.com ");
+  }
+</script>
 @endpush
