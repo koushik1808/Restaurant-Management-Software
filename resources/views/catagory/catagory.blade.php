@@ -39,7 +39,8 @@ Catagory
           <td>{{$i=$i+1}}</td>
           <td>{{$cata->category}}</td>
           <td><a href="#" class="btn btn-warning"><i class='bx bxs-edit'></i></a>
-            <a href="{{route('Admin.delete_category',['id'=>$cata->id])}}" class="btn btn-danger"><i class='bx bxs-trash'></i></a>
+            <a href="{{route('Admin.delete_category',['id'=>$cata->id])}}" class="btn btn-danger"><i
+                class='bx bxs-trash'></i></a>
           </td>
         </tr>
         @endforeach

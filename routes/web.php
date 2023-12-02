@@ -51,8 +51,8 @@ Route::middleware('isLogin')->group(function () {
     Route::controller(TableController::class)->group(function () {
         //
         Route::get('/Dashbroad', 'Dashbroad')->name('Admin.Dashbroad');
-         //
-         Route::get('/User_Dashbroad', 'User_Dashbroad')->name('User.Dashbroad');
+        //
+        Route::get('/User_Dashbroad', 'User_Dashbroad')->name('User.Dashbroad');
         //
         Route::get('/Billing/{id}', 'Billing')->name('Admin.Billing');
         //
