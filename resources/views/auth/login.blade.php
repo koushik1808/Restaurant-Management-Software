@@ -11,9 +11,10 @@
 
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <div class="d-flex px-3 py-2 justify-content-center gap-5">
-          <a href="{{route('Admin.login')}}" class="btn btn-lg btn-primary">Admin</a>
-          <a href="{{route('User.login')}}"  class="btn btn-lg btn-outline-primary">User</a>
+          <a href="{{route('Admin.login')}}" class="btn btn-lg btn-primary">ADMIN</a>
+          <a href="{{route('User.login')}}" class="btn btn-lg btn-outline-primary">USER</a>
         </div>
+        <p class="text-center fs-5 fw-medium py-2">Admin Login</p>
         <form action="{{route('Admin.login_check')}}" method="post" class="py-3 p-md-0">
           <!-- Email input -->
 

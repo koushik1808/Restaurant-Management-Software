@@ -1,28 +1,38 @@
-@extends('includes.default')
+@extends("includes.default")
 
 
 @section('hero')
-<section class="vh-100">
-  <div class="container py-5 h-100">
+<section>
+  <div class="container py-5 h-100 overflow-auto">
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="{{ asset('public/image/login-logo.svg') }}" class="img-fluid" alt="Phone image">
+        <img src="{{ asset('public/image/auth.png') }}" class="img-fluid" alt="Phone image">
       </div>
 
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <div class="d-flex px-3 py-2 justify-content-center gap-5">
-          <a href="{{route('Admin.login')}}" class="btn btn-lg btn-outline-primary">ADMIN</a>
-          <a href="{{route('User.login')}}" class="btn btn-lg btn-primary">USER</a>
+          <a href="{{route('Admin.login')}}" class="btn btn-lg text-primary">Login</a>
+          <a href="#" class="btn btn-lg btn-primary">Register</a>
         </div>
-        <p class="text-center fs-5 fw-medium py-2">User Login</p>
-        <form action="{{route('User.login_check')}}" method="post" class="py-3 p-md-0">
+        <p class="text-center fs-5 fw-medium py-2">User Register</p>
+        <form action="#" method="post" class="py-3 p-md-0">
           <!-- Email input -->
-
-          @if (Session::has('lock_status'))
-          <p class="form-text text-danger">{{Session::get('lock_status')}}</p>
-          @endif
-
           @csrf
+          {{-- username --}}
+          <div class="form-outline mb-3">
+            <label for="userName" class="form-label">Full-Name</label>
+            <input type="text" class="form-control form-control-lg" id="userName" name="username">
+          </div>
+          {{-- phonenumber --}}
+          <div class="form-outline mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phonenumber">
+          </div>
+          {{-- @if (Session::has('lock_status'))
+          <p class="form-text text-danger">{{Session::get('lock_status')}}</p>
+          @endif --}}
+
+          {{-- email address --}}
           <div class="form-outline mb-4">
             <label class="form-label" for="form1Example13">Email address</label>
             <input type="email" id="form1Example13" name="email" class="form-control form-control-lg "
@@ -48,7 +58,7 @@
             <p class="form-text text-danger">{{Session::get('fall_password')}}</p>
             @endif
           </div>
-
+          {{-- 
           <div class="d-flex justify-content-between align-items-center mb-4">
             <!-- Checkbox -->
             <div class="form-check">
@@ -56,10 +66,10 @@
               <label class="form-check-label" for="form1Example3"> Remember me </label>
             </div>
             <a href="#!">Forgot password?</a>
-          </div>
+          </div> --}}
 
           <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
 
 
         </form>
@@ -67,20 +77,5 @@
     </div>
   </div>
 </section>
+
 @endsection
-
-@push('script')
-<script>
-  const eyeEl=document.querySelector("#hide-icon")
-  const passEl=document.querySelector("#form-pass")
-  eyeEl.addEventListener("click",()=>{
-    if(passEl.getAttribute("type")=="text"){
-      passEl.setAttribute("type","password")
-    }
-    else{
-      passEl.setAttribute("type","text")
-    }
-  })
-</script>
-
-@endpush

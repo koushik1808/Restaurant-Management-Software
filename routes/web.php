@@ -52,8 +52,8 @@ Route::middleware('isLogin')->group(function () {
     Route::controller(UserController::class)->group(function () {
         //
         Route::get('/User_details', 'User_details')->name('User.details');
-        
-    
+
+
     });
 
     Route::controller(TableController::class)->group(function () {
@@ -142,3 +142,4 @@ Route::middleware('isLogin')->group(function () {
     });
 });
 Route::get('/menus', [MenuController::class, 'view_public_menu']);
+Route::view('/register', 'auth.register');
