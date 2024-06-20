@@ -1,21 +1,21 @@
-#gradient-back {
-  height: 100lvh;
-  background: url("../image/wave.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  overflow: hidden;
+:root{
+  --header-bg:#7624fa;
+  --card-bg:rgb(72, 235, 72);
 }
-.form-wrapper {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-wrapper .form-card {
-  width: 60%;
-  height: 400px;
-  background-color: #f8f8f8;
+#header{
+  background-color: var(--header-bg);
 }
 
 
+#card{
+  min-width: 200px;
+  background-color: var(--card-bg);
+  cursor: pointer;
+
+}
+#card img{
+  height: 100px;
+  width: 50%;
+  margin-inline: auto;
+  mix-blend-mode: color-burn;
+}

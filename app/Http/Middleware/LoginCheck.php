@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class LoginCheck
@@ -15,6 +16,9 @@ class LoginCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(!Session::has('LoginName')){
+            return redirect()->route('Admin.login');
+        }
         return $next($request);
     }
 }
